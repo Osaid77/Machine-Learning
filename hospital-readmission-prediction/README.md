@@ -61,44 +61,44 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 ### All models however display weak discrimination at only 0.59 ROC-AUC. 
 
 
-# Threshold Interpretation:
+# Threshold Interpretation
 - Threshold 0.50 shows the best performance among all thresholds across all models especially our selected shortlisted models.  
 
 
 
-# Class Imbalance Interpretation:
+# Class Imbalance Interpretation
 - The balanced models generally produce better outcomes due to their attention on the minority positive class that represents only 8.79% and giving it more weight contribution.
 
 
 
-# Calibration interpretation:
+# Calibration interpretation
 - Calibration generally produces slightly lower Brier scores for calibrated models which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models. Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02. Our top models such as hgb_b and dt_b at thresholds 0.50 each benefits from calibration with original brier being 0.24 and after calibration they become 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.
 
 
 
-# Clinical deployment:
+# Clinical deployment
 - Choosing the best model depends on requirements like highest accepted Positive alerts number that combines TP and FP. Also, we need to know total number of missed positive cases that can be accommodated. Clinical deployment also relies on data quality and representativeness, security, hospital requirements and more validation procedures.
 
 
 
 # Hyperparamter Tuning
 - The parameters of our top models that provided best scores are:
-- hgb_b threshold 0.50: 'model__max_leaf_nodes': 10, 'model__max_iter': 150, 'model__learning_rate': 0.05. indicating that the middle balance is the best balance in gradient boosting.
-- dt_b threshold 0.50: 'model__max_depth': 5, 'model__min_samples_leaf': 10 
-- logr_b at threshold 0.50: 'model__C': 0.1
-- rf at threshold 0.1: 'model__n_estimators': 200, 'model__min_samples_leaf': 30, 'model__max_depth': 15. Indicating the increase of trees in rf produces most accurate results.&#x20;
+- hgb_b threshold 0.50: 'model__max_leaf_nodes': 10, 'model__max_iter': 150, 'model__learning_rate': 0.05. indicating that the middle balance is the best balance in gradient boosting for our 10 iterations.
+- dt_b threshold 0.50: 'model__max_depth': 5, 'model__min_samples_leaf': 10. This is the lowest measurement for both metrics indicating that as we go with higher values, overfitting could happen.
+- logr_b at threshold 0.50: 'model__C': 0.1. This is the highest regualarization implemented and it indicate logistic regression produces best results when regularized more. 
+- rf at threshold 0.1: 'model__n_estimators': 200, 'model__min_samples_leaf': 30, 'model__max_depth': 15. All these represent the highest values indicating the increase of trees and minimum samples per leaf and the more depth in rf, the more accurate results will be produced.
 
 
 
-# logistic regression coef interpretation:&#x20;
+# logistic regression coef interpretation
 
-number_inpatient is the highest feature for both logr and logr_b indicating the number of previous hospitalizations determines our target class the most, as it increases, so is the chance of readmission does. The more previous hospitalizations, the higher the change of a readmission within 30 days.
+number_inpatient is the highest feature for both logr and logr_b indicating the number of previous hospitalizations is associated with our target class the most, as it increases, so is the chance of readmission does. The more previous hospitalizations, the higher the change of a readmission within 30 days.
 
-Other features that also contribute to our positive target are:
+Other features that also contribute to our positive target class are:
 
 time_in_hospital: The more time spent in hospital, the higher the chance of readmission within 30 days.
 
-diabetesMed_Yes: the more diabetes medications being taken, the higher the chance of readmission within 30 days
+diabetesMed_Yes: If a patient was taking diabetes medications, there will be a higher chance of readmission within 30 days
 
 num_lab_procedures: indicating the more number of lab procedures, the higher the chance of readmission with 30 days.
 
@@ -110,11 +110,10 @@ gender_Male: appears slightly positive in original model indicating positive imp
 
 gender_Female: appears slightly negative in the balanced model indicating negative impact on readmission probability.
 
-For these two features, we might rely more on the balanced version as it gives more attention to the minority class and this could be more accurate in most scenarios.&#x20;
 
 
 
-diabetesMed_No on the other hand is the feature that's the most protective from our target i.e. the lower and more negative it is, the lower the readmission probability. Accompanied by other features such as:
+diabetesMed_No on the other hand is the feature that's the most associated with our target of readmission within 30 days i.e. the lower and more negative it is, the lower the readmission probability. Accompanied by other features such as:
 
 A1Cresult\_>7
 
@@ -122,11 +121,11 @@ A1Cresult\_>8
 
 A1Cresult_Norm
 
-All prove that normal HgbA1C can be protective from readmission within 30 days probability after readmission.
+All prove that normal HgbA1C is associated with lower probability of readmission within 30 days.
 
 
 
-# Decision tree and random forests feature importances:
+# Decision tree and random forests feature importances
 
 Original and balanced models differ in their choices of feature importance for purity and homogenity. 
 
@@ -138,7 +137,7 @@ Reflecting how balanced models rely more on features with minority class.
 
 
 
-# Feature importances:
+# Feature importances
 
 - All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.
 
