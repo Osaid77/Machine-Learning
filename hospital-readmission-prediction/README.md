@@ -51,13 +51,9 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 | logr_b | 0.50 | 0.12 | 0.46 | 0.19 | 0.67 | 0.59 | 0.13 |
 | rf | 0.1 | 0.12 | 0.39 | 0.18 | 0.72 | 0.59 | 0.13 |
 
-### hgb_b threshold 0.50: prc 0.11, rec 0.58, f1 0.19, spc 0.57, ROC-AUC 0.60, AP 0.13.&#x20;
+### Balanced logistic regression at threshold 0.50 shows slightly lower recall than the balanced gradient boosting and decision tree but it shows higher specificity.
 
-### dt_b threshold 0.50: prc 0.11, rec 0.58, f1 0.18, spc 0.56, ROC-AUC 0.59, AP 0.12.
-
-### logr_b at threshold 0.50: prc 0.12, rec 0.46, f1 0.19, spc 0.67, ROC-AUC 0.59, AP 0.13. It shows slightly lower recall than the above two but it shows higher specificity.
-
-### rf at threshold 0.1: prc 0.12, rec 0.39, f1 0.18, spc 0.72, ROC-AUC 0.59, AP 0.13. This is the highest specificity among all model with an acceptable precision, recall. Model of chose if we care about TN the most.&#x20;
+### Random forest at threshold 0.1 has the highest specificity of 0.72 among all models with an acceptable precision, recall. Ir's the model of choice if we care about TN the most.&#x20;
 
 
 
