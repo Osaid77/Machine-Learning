@@ -53,12 +53,12 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 ### Balanced logistic regression at threshold 0.50 shows slightly lower recall than the balanced gradient boosting and decision tree but it shows higher specificity.
 
-### Random forest at threshold 0.1 has the highest specificity of 0.72 among all models with an acceptable precision, recall. Ir's the model of choice if we care about TN the most.&#x20;
+### Random forest at threshold 0.1 has the highest specificity of 0.72 among all models with an acceptable precision, recall. It's the model of choice if we care about TN the most.
 
 
 
 ## Threshold Interpretation:
-- Threshold 0.50 shows the best performance among the thresholds reflecting that lowering the threshold doesn't reveal higher TP and TN nor lowering FP and FN. Instead, it mostly provides lower performances across the metrics.&#x20;
+- Threshold 0.50 shows the best performance among the thresholds reflecting that lowering the threshold doesn't reveal higher TP and TN nor lowering FP and FN. Instead, it mostly provides lower performances across the metrics.
 
 
 
