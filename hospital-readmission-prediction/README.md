@@ -39,17 +39,21 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
 
-## Results Interpretation:
+# Results Interpretation:
 
 - The best models that combine highest recall, precision, specificity, f1, ROC-AUC, and AP are:&#x20;
 
-### #1 hgb_b threshold 0.50: prc 0.11, rec 0.58, f1 0.19, spc 0.57, ROC-AUC 0.60, AP 0.13.&#x20;
+| Model | Thresh | Prc | Rec | F1 | Spec | ROC-AUC | AvgPrc 
+hgb_b | 0.50 | 0.11 | 0.58 | 0.19 | 0.57 | 0.60 | 0.13 
+dt_b | 0.50 | 0.11 | 0.58 | 0.18 | 0.56 | 0.59 | 0.12
 
-### #2 dt_b threshold 0.50: prc 0.11, rec 0.58, f1 0.18, spc 0.56, ROC-AUC 0.59, AP 0.12.
+### hgb_b threshold 0.50: prc 0.11, rec 0.58, f1 0.19, spc 0.57, ROC-AUC 0.60, AP 0.13.&#x20;
 
-### #3 logr_b at threshold 0.50: prc 0.12, rec 0.46, f1 0.19, spc 0.67, ROC-AUC 0.59, AP 0.13. It shows slightly lower recall than the above two but it shows higher specificity.
+### dt_b threshold 0.50: prc 0.11, rec 0.58, f1 0.18, spc 0.56, ROC-AUC 0.59, AP 0.12.
 
-### #4 rf at threshold 0.1: prc 0.12, rec 0.39, f1 0.18, spc 0.72, ROC-AUC 0.59, AP 0.13. This is the highest specificity among all model with an acceptable precision, recall. Model of chose if we care about TN the most.&#x20;
+### logr_b at threshold 0.50: prc 0.12, rec 0.46, f1 0.19, spc 0.67, ROC-AUC 0.59, AP 0.13. It shows slightly lower recall than the above two but it shows higher specificity.
+
+### rf at threshold 0.1: prc 0.12, rec 0.39, f1 0.18, spc 0.72, ROC-AUC 0.59, AP 0.13. This is the highest specificity among all model with an acceptable precision, recall. Model of chose if we care about TN the most.&#x20;
 
 
 
