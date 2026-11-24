@@ -6,14 +6,14 @@ Class imbalance is spotted as the positive class labels represents only 8.79% of
 
 
 
-# Features used:&#x20;
+# Features used
 
 numerical_features = ["time_in_hospital", "num_lab_procedures", "num_medications", "number_inpatient"]
 categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
 
-# Technologies used:
+# Technologies
 
 - Python
 - Numpy
@@ -22,7 +22,7 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
 
-# Topics covered:
+# Topics covered
 
 - Preprocessing techniques including imputing, scaling and one-hot encoding
 - Models: DummyClassifier, Logistic regression, Decision tree, Random forest, and Gradient boosting
@@ -39,7 +39,7 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
 
-# Results Interpretation:
+# Results Interpretation
 
 - The best models that combine highest recall, precision, specificity, f1, ROC-AUC, and AP are:
 
@@ -71,7 +71,7 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
 # Calibration interpretation:
-- Calibration generally produces slightly lower Brier scores for calibrated models which is agood sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models. Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02. Our top models such as hgb_b and dt_b at thresholds 0.50 each benefits from calibration with original brier being 0.24 and after calibration it becomes 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.
+- Calibration generally produces slightly lower Brier scores for calibrated models which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models. Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02. Our top models such as hgb_b and dt_b at thresholds 0.50 each benefits from calibration with original brier being 0.24 and after calibration they become 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.
 
 
 
