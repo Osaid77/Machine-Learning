@@ -9,6 +9,7 @@ Class imbalance is spotted as the positive class labels represents only 8.79% of
 # Features used
 
 numerical_features = ["time_in_hospital", "num_lab_procedures", "num_medications", "number_inpatient"]
+
 categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
