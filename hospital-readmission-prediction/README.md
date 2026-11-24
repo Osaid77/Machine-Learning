@@ -48,6 +48,14 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 hgb_b | 0.50 | 0.11 | 0.58 | 0.19 | 0.57 | 0.60 | 0.13 
 dt_b | 0.50 | 0.11 | 0.58 | 0.18 | 0.56 | 0.59 | 0.12
 
+
+| Model | Thresh | Prc | Rec | F1 | Spec | ROC-AUC | AvgPrc |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
+| hgb_b | 0.50 | 0.11 | 0.58 | 0.19 | 0.57 | 0.60 | 0.13 |
+| dt_b | 0.50 | 0.11 | 0.58 | 0.18 | 0.56 | 0.59 | 0.12 |
+
+
+
 ### hgb_b threshold 0.50: prc 0.11, rec 0.58, f1 0.19, spc 0.57, ROC-AUC 0.60, AP 0.13.&#x20;
 
 ### dt_b threshold 0.50: prc 0.11, rec 0.58, f1 0.18, spc 0.56, ROC-AUC 0.59, AP 0.12.
