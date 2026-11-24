@@ -1,16 +1,19 @@
-A machine learning model to predict readmission of within 30 days after discharge. We use multiple classifiers to predict
+# Introduction
 
+A machine learning model to predict readmission of within 30 days after discharge. We use multiple classifiers to predict.
 Data is split into 70% training, 15% validation, and 15% for testing. Only 1 record per patient is allowed.&#x20;
-
 Class imbalance is spotted as the positive class labels represents only 8.79% of the dataset.&#x20;
 
-Features used:&#x20;
+
+
+# Features used:&#x20;
 
 numerical_features = ["time_in_hospital", "num_lab_procedures", "num_medications", "number_inpatient"]\
-categorical_features = ["gender", "A1Cresult", "diabetesMed"]\
+categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
-Technologies used:
+
+# Technologies used:
 
 - Python
 - Numpy
@@ -19,7 +22,7 @@ Technologies used:
 
 
 
-Topics covered:
+# Topics covered:
 
 - Preprocessing techniques including imputing, scaling and one-hot encoding
 - Models: DummyClassifier, Logistic regression, Decision tree, Random forest, and Gradient boosting
@@ -36,36 +39,41 @@ Topics covered:
 
 
 
-Results Interpretation:
+## Results Interpretation:
 
-- The best models that combine highest recall, precision, f1, ROC-AUC, and AP are:&#x20;
+- The best models that combine highest recall, precision, specificity, f1, ROC-AUC, and AP are:&#x20;
 
-\#1 hgb_b threshold 0.50: prc 0.11, rec 0.58, f1 0.19, spc 0.57, ROC-AUC 0.60, AP 0.13.&#x20;
+### #1 hgb_b threshold 0.50: prc 0.11, rec 0.58, f1 0.19, spc 0.57, ROC-AUC 0.60, AP 0.13.&#x20;
 
-\#2 dt_b threshold 0.50: prc 0.11, rec 0.58, f1 0.18, spc 0.56, ROC-AUC 0.59, AP 0.12.
+### #2 dt_b threshold 0.50: prc 0.11, rec 0.58, f1 0.18, spc 0.56, ROC-AUC 0.59, AP 0.12.
 
-\#3 logr_b at threshold 0.50: prc 0.12, rec 0.46, f1 0.19, spc 0.67, ROC-AUC 0.59, AP 0.13. It shows slightly lower recall than the above two but it shows higher specificity.
+### #3 logr_b at threshold 0.50: prc 0.12, rec 0.46, f1 0.19, spc 0.67, ROC-AUC 0.59, AP 0.13. It shows slightly lower recall than the above two but it shows higher specificity.
 
-\#4 rf at threshold 0.1: prc 0.12, rec 0.39, f1 0.18, spc 0.72, ROC-AUC 0.59, AP 0.13. This is the highest specificity among all model with an acceptable precision, recall. Model of chose if we care about TN the most.&#x20;
+### #4 rf at threshold 0.1: prc 0.12, rec 0.39, f1 0.18, spc 0.72, ROC-AUC 0.59, AP 0.13. This is the highest specificity among all model with an acceptable precision, recall. Model of chose if we care about TN the most.&#x20;
 
 
 
+## Threshold Interpretation:
 - Threshold 0.50 shows the best performance among the thresholds reflecting that lowering the threshold doesn't reveal higher TP and TN nor lowering FP and FN. Instead, it mostly provides lower performances across the metrics.&#x20;
 
 
 
+# Class Imbalance Interpretation:
 - The balanced models generally produce better outcomes due to their attention on the minority positive class that represents only 8.79%.&#x20;
 
 
 
+# Calibration interpretation:
 - Calibration generally produces slightly lower Brier scores for calibrated models which is agood sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models. Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02. Our top models such as hgb_b and dt_b at thresholds 0.50 each benefits from calibration with original brier being 0.24 and after calibration it becomes 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.&#x20;
 
 
 
+# Clinical deployment:
 - Choosing the best model depends on requirements like highest accepted Positive alerts number that combines TP and FP. Also, we need to know total number of missed positive cases that can be accommodated. Clinical deployment also relies on data quality and representativeness, security, hospital requirements and more validation procedures.
 
 
 
+# Hyperparamter Tuning
 - The parameters of our top models that provided best scores are:
 - hgb_b threshold 0.50: 'model__max_leaf_nodes': 10, 'model__max_iter': 150, 'model__learning_rate': 0.05. indicating that the middle balance is the best balance in gradient boosting.
 - dt_b threshold 0.50: 'model__max_depth': 5, 'model__min_samples_leaf': 10 &#x20;
@@ -74,7 +82,7 @@ Results Interpretation:
 
 
 
-- logistic regression coef interpretation:&#x20;
+## logistic regression coef interpretation:&#x20;
 
 number_inpatient is the highest feature for both logr and logr_b indicating the number of previous hospitalizations determines our target class the most, as it increases, so is the chance of readmission does. The more previous hospitalizations, the higher the change of a readmission within 30 days.&#x20;
 
@@ -110,7 +118,7 @@ All prove that normal HgbA1C can be protective from readmission within 30 days p
 
 
 
-- Decision tree and random forests feature importances:
+## Decision tree and random forests feature importances:
 
 Original and balanced models differ in their choices of feature importance for purity and homogenity. &#x20;
 
@@ -122,14 +130,14 @@ Reflecting how balanced models rely more on features with minority class.&#x20;
 
 
 
-- Feature importances:
+## Feature importances:
 
-All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.&#x20;
+- All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.&#x20;
 
 
 
-Now, I'm building my interpretation skills of ML results, so I can write my own human way in the README file in the GitHub portfolio. Above I talked about:&#x20;
 
+## Summary 
 - best performing models
 - Thresholds performance
 - Effect of class_weight="balanced" i.e. balancing the datasets
@@ -143,9 +151,3 @@ Now, I'm building my interpretation skills of ML results, so I can write my own 
 
 
 
-
-Can I just write these in the README as they are? Anything wrong in my interpretation?
-
-Also, Is there anything else I should write about besides these in the README? What is it?
-
-You cannot exactly give me the text and I copy and paste, that's illegal and I will be caught using AI, but you can tell me what are the things to talk about.
