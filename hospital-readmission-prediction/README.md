@@ -142,6 +142,7 @@ Reflecting how balanced models rely more on features with minority class.
 
 - All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.
 However, there's a disagreement between trees feature importance and permutation importance
+
 | Model | Feature | Tree importance | Permutation importance |
 | dt | num_lab_procedures | 0.35 | -0.015 |
 
