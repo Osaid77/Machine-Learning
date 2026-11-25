@@ -28,7 +28,7 @@ Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals
 # Data preparation & leakage prevention
 
 - Patient deduplication: reserving only one record per patient
-- Splitting before preprocessing i.e stratification and partitioning classes equally among training, validation and testing set. 
+- Splitting before preprocessing as I do stratification which preserves approximately the same class proportions among training, validation and testing set. So, the positive class becomes 8.79% among all sets.
 - fitting transformation on training data only
 
 
