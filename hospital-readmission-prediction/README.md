@@ -19,6 +19,7 @@ Many patients get readmitted after being hospitalized for certain amount of time
 - Features used in this project:
 - numerical_features = ["time_in_hospital", "num_lab_procedures", "num_medications", "number_inpatient"]
 - categorical_features = ["gender", "A1Cresult", "diabetesMed"]
+- Limitation: only 7 features were chosen out of 47
 - Target: Readmission with 30 days after discharge
 - Target percentage: 8.79%
 - Citation:
@@ -65,6 +66,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 # Results Interpretation
 
+- I prioritzed recall due to the sensitivity of missing TP cases.
 - The best models that combine highest recall, precision, specificity, f1, ROC-AUC, and AP are:
 
 
@@ -191,7 +193,7 @@ This means this feature contributes a lot in purity of the original decision tre
 | AP | 0.13 | 0.13 | 
 | Brier | 0.24 | 0.24 |
 
-- Based on the results shown, we can see that testing and validation are pretty similar or the same confirming consistency of results. 
+- Based on the results shown, we can see that testing and validation are pretty similar or the same confirming consistency of results and ability of the model to be externally validated and good generalization.   
 
 
 # Project limitations
@@ -207,5 +209,6 @@ This means this feature contributes a lot in purity of the original decision tre
  - More feature engineering and external validation
 
 
-
+# Clinical disclaimer 
+- Educational research project, not a clinically validated system
 
