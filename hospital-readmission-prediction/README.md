@@ -41,6 +41,14 @@ Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals
 - Scikit-Learn
 
 
+# Installation & usage
+| Step | Instruction |
+| 1 | Download the dataset | 
+| 2 | Place diabetic_data.csv inside the project folder | 
+| 3 | Install dependencies using pip install -r requirements.txt | 
+| 4 | Execute the script using Python readmission_model.py
+
+
 
 # Reproducibility
 rnadom_state=42 was implemented across training, validation, and testing splitting. It's also implemented in all models training, hyperparameter tuning and stratification, and permutation importance.
@@ -193,7 +201,8 @@ This means this feature contributes a lot in purity of the original decision tre
 | AP | 0.13 | 0.13 | 
 | Brier | 0.24 | 0.24 |
 
-- Based on the results shown, we can see that testing and validation are pretty similar or the same confirming consistency of results and ability of the model to be externally validated and good generalization.   
+- Based on the results shown, we can see that testing and validation are pretty similar or the same confirming consistency of results and good generalization with unseen patients within the same dataset. Discrimination however remains weak despite good consistency.
+- External validation is required.   
 
 
 # Project limitations
