@@ -6,17 +6,17 @@ Class imbalance is spotted as the positive class labels represents only 8.79% of
 
 # Dataset description
 
-Datset: Diabetes 130-US Hospitals for Years 1999-2008. 
-Instances before deduplication: 101766
-Instances after deduplication: 71518
-Features: 47
-Features used in this project:
-numerical_features = ["time_in_hospital", "num_lab_procedures", "num_medications", "number_inpatient"]
-categorical_features = ["gender", "A1Cresult", "diabetesMed"]
-Target: Readmission with 30 days after discharge
-Target percentage: 8.79%
-Link: https://archive.ics.uci.edu/dataset/296/diabetes%2B130-us-hospitals%2Bfor%2Byears%2B1999-2008?utm_source 
-Citation:
+- Datset: Diabetes 130-US Hospitals for Years 1999-2008. 
+- Instances before deduplication: 101766
+- Instances after deduplication: 71518
+- Features: 47
+- Features used in this project:
+- numerical_features = ["time_in_hospital", "num_lab_procedures", "num_medications", "number_inpatient"]
+- categorical_features = ["gender", "A1Cresult", "diabetesMed"]
+- Target: Readmission with 30 days after discharge
+- Target percentage: 8.79%
+- Link: https://archive.ics.uci.edu/dataset/296/diabetes%2B130-us-hospitals%2Bfor%2Byears%2B1999-2008?utm_source 
+- Citation:
 Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals for Years 1999-2008 [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5230J.
 
 
