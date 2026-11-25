@@ -180,6 +180,17 @@ This means this feature contributes a lot in purity of the original decision tre
 
 
 # Test set evaluation
+| Metric | Validation | Test |
+| Acc | 0.57 | 0.56 |
+| Prc | 0.11 | 0.11 | 
+| Rec | 0.58 | 0.57 | 
+| F1 | 0.19 | 0.18 | 
+| Spc | 0.57 | 0.56 | 
+| Roc | 0.60 | 0.60 | 
+| AP | 0.13 | 0.13 | 
+| Brier | 0.24 | 0.24 |
+
+- Based on the results shown, we can see that testing and validation are close 
 
 
 # Project limitations
