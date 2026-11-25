@@ -71,6 +71,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 | Model | Thresh | Prc | Rec | F1 | Spec | ROC-AUC | AvgPrc |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
 | hgb_b | 0.50 | 0.11 | 0.58 | 0.19 | 0.57 | 0.60 | 0.13 |
+| hgb | 0.10 | 0.13 | 0.38 | 0.19 | 0.75 | 0.60 | 0.13 | 
 | dt_b | 0.50 | 0.11 | 0.58 | 0.18 | 0.56 | 0.59 | 0.12 |
 | logr_b | 0.50 | 0.12 | 0.46 | 0.19 | 0.67 | 0.59 | 0.13 |
 | rf | 0.1 | 0.12 | 0.39 | 0.18 | 0.72 | 0.59 | 0.13 |
