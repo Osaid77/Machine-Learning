@@ -43,6 +43,7 @@ Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals
 
 # Installation & usage
 | Step | Instruction |
+| :--- | ---: |
 | 1 | Download the dataset | 
 | 2 | Place diabetic_data.csv inside the project folder | 
 | 3 | Install dependencies using pip install -r requirements.txt | 
