@@ -1,6 +1,6 @@
 # Introduction
 
-A machine learning model to predict readmission of within 30 days after discharge. We use multiple classifiers to predict.
+A machine learning model to predict readmission within 30 days after discharge. We use multiple classifiers to predict our target including the dummy classifier which is outperformed by all our models.
 Data is split into 70% training, 15% validation, and 15% for testing. Only 1 record per patient is allowed.
 Class imbalance is spotted as the positive class labels represents only 8.79% of the dataset.
 
@@ -18,6 +18,10 @@ Class imbalance is spotted as the positive class labels represents only 8.79% of
 - Citation:
 Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals for Years 1999-2008 [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5230J.
 
+# Data leakage prevention
+- Patient deduplication: reserving only one record per patient
+- Splitting before preprocessing i.e stratification and partitioning classes equally among training, validation and testing set. 
+- fitting transformation on training data only
 
 
 # Technologies
