@@ -181,6 +181,7 @@ This means this feature contributes a lot in purity of the original decision tre
 
 # Test set evaluation
 | Metric | Validation | Test |
+| :--- | :---: | ---: |
 | Acc | 0.57 | 0.56 |
 | Prc | 0.11 | 0.11 | 
 | Rec | 0.58 | 0.57 | 
