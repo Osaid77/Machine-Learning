@@ -77,7 +77,11 @@ categorical_features = ["gender", "A1Cresult", "diabetesMed"]
 
 
 # Clinical deployment
-- Choosing the best model depends on requirements like highest accepted Positive alerts number that combines TP and FP. Also, we need to know total number of missed positive cases that can be accommodated. Clinical deployment also relies on data quality and representativeness, security, hospital requirements and more validation procedures.
+Choosing the best model depends on requirements like:
+- highest accepted Positive alerts number that combines TP and FP, we need to understand what makes an alert fatigue from excessive FP.
+- Consequences of missing TP cases. So, we need to know total number of missed positive cases that can be accommodated.
+- External validation using patients from other hospitals
+- Clinical deployment also relies on data quality and representativeness, security, hospital requirements and more validation procedures.
 
 
 
@@ -106,14 +110,11 @@ num_lab_procedures: indicating the more number of lab procedures, the higher the
 
 There are some conflicting features between the original and the balanced versions of logistic regression
 
-gender_Male: appears slightly positive in original model indicating positive impact on readmission probability
-
-gender_Female: appears slightly negative in the balanced model indicating negative impact on readmission probability.
+Both gender_Male and gender_Female appear slightly positive in original model indicating positive impact on readmission probability but slightly negative in balanced model indicating negative impact. 
 
 
 
-
-diabetesMed_No on the other hand is the feature that's the most associated with our target of readmission within 30 days i.e. the lower and more negative it is, the lower the readmission probability. Accompanied by other features such as:
+diabetesMed_No on the other hand is the most negative feature associated with our target of readmission within 30 days i.e. the lower and more negative it is, the lower the readmission probability. Accompanied by other features such as:
 
 A1Cresult\_>7
 
@@ -129,7 +130,7 @@ All prove that normal HgbA1C is associated with lower probability of readmission
 
 Original and balanced models differ in their choices of feature importance for purity and homogenity. 
 
-num_lab_procedures features is the top feature that help tree purity/homogeniety in both original DT and RF. Closely Followed by num_medications.
+num_lab_procedures feature is the top feature that help tree purity/homogeniety in both original DT and RF. Closely Followed by num_medications.
 
 number_inpatient features is the top feature that help tree purity/homogeniety in both balanced DT and RF. Closely followed by time_in_hospital.
 
@@ -140,7 +141,11 @@ Reflecting how balanced models rely more on features with minority class.
 # Feature importances
 
 - All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.
+However, there's a disagreement between trees feature importance and permutation importance
+| Model | Feature | Tree importance | Permutation importance |
+| dt | num_lab_procedures | 0.35 | -0.015 |
 
+This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC. 
 
 
 
