@@ -99,7 +99,9 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 
 ## Calibration interpretation
-- Calibration generally produces slightly lower Brier scores for calibrated models which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models. Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02. Our top models such as hgb_b and dt_b at thresholds 0.50 each benefits from calibration with original brier being 0.24 and after calibration they become 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.
+- Calibration generally produces slightly lower Brier scores for calibrated models meaning it improves probability quality which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models.
+- Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02.
+- Our top models such as hgb_b and dt_b at thresholds 0.50 each benefit from calibration with original brier being 0.24 and after calibration they become 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.
 
 
 
@@ -141,7 +143,7 @@ Both gender_Male and gender_Female appear slightly positive in original model in
 
 
 
-diabetesMed_No on the other hand is the most negative feature associated with our target of readmission within 30 days i.e. the lower and more negative it is, the lower the readmission probability. Accompanied by other features such as:
+diabetesMed_No on the other hand is the most negative feature associated with our target of readmission within 30 days i.e. it is associated with lower readmission probability. Accompanied by other features such as:
 
 A1Cresult\_>7
 
