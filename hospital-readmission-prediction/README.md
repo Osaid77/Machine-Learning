@@ -88,7 +88,8 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 
 ## Threshold Interpretation
-- Threshold 0.50 shows the best performance among all thresholds across all models especially our selected shortlisted models.  
+- Thresholds 0.50, and 0.10 shows the best performance among all thresholds across all models especially our selected shortlisted models.
+- However, all balanced models achieved best results with threshold 0.50. Meanwhile, original models achieved best results at threshold 0.10. 
 
 
 
@@ -190,19 +191,6 @@ This means this feature contributes a lot in purity of the original decision tre
  - Additional clinical predictors
  - More thresholds to be selected like [0.08, 0.15, 0.20, 0.25]
  - More feature engineering and external validation
-
-
-
-# Summary 
-- best performing models
-- Thresholds performance
-- Effect of class_weight="balanced" i.e. balancing the datasets
-- Calibration effect
-- Hyperparameter tuning with best score
-- logistic regression coef interpretation
-- DT and RF feature_importances interpretation
-- permutation importance
-- conclusion about clinical deployment
 
 
 
