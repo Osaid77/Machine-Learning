@@ -191,7 +191,7 @@ This means this feature contributes a lot in purity of the original decision tre
 | AP | 0.13 | 0.13 | 
 | Brier | 0.24 | 0.24 |
 
-- Based on the results shown, we can see that testing and validation are close 
+- Based on the results shown, we can see that testing and validation are pretty similar or the same confirming consistency of results. 
 
 
 # Project limitations
