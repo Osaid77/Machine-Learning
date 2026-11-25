@@ -1,8 +1,14 @@
-# Introduction
+# Project overview
 
-A machine learning model to predict readmission within 30 days after discharge. We use multiple classifiers to predict our target including the dummy classifier which is outperformed by all our models.
-Data is split into 70% training, 15% validation, and 15% for testing. Only 1 record per patient is allowed.
+A machine learning model to predict readmission within 30 days after discharge. We use multiple classifiers to predict our target including the dummy classifier.
+Data is split into 70% training, 15% validation, and 15% for testing and only 1 record per patient is allowed.
 Class imbalance is spotted as the positive class labels represents only 8.79% of the dataset.
+
+
+# Clinical problem & objective
+
+Many patients get readmitted after being hospitalized for certain amount of time. I built a model to predict whether a patient will be readmitted within 30 days after being discharged using many features categorical and numerical ones.
+
 
 # Dataset description
 
@@ -18,7 +24,9 @@ Class imbalance is spotted as the positive class labels represents only 8.79% of
 - Citation:
 Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals for Years 1999-2008 [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5230J.
 
-# Data leakage prevention
+
+# Data preparation & leakage prevention
+
 - Patient deduplication: reserving only one record per patient
 - Splitting before preprocessing i.e stratification and partitioning classes equally among training, validation and testing set. 
 - fitting transformation on training data only
@@ -38,7 +46,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 
 
-# Topics covered
+# Machine Learning methodology
 
 - Preprocessing techniques including imputing, scaling and one-hot encoding
 - Models: DummyClassifier, Logistic regression, Decision tree, Random forest, and Gradient boosting
@@ -75,18 +83,20 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 ### All models however display weak discrimination at only 0.59 ROC-AUC. 
 
+### Dummy classifier was outperformed by all our models. Even though it displayed accuracy of 0.912 which is the highest accuracy among all models, it showed 0 recall and precision with 0.50 ROC-AUC which is also the lowest. That's why accuracy alone is misleading when interpreted alone. 
 
-# Threshold Interpretation
+
+## Threshold Interpretation
 - Threshold 0.50 shows the best performance among all thresholds across all models especially our selected shortlisted models.  
 
 
 
-# Class Imbalance Interpretation
+## Class balancing Interpretation
 - The balanced models generally produce better outcomes due to their attention on the minority positive class that represents only 8.79% and giving it more weight contribution.
 
 
 
-# Calibration interpretation
+## Calibration interpretation
 - Calibration generally produces slightly lower Brier scores for calibrated models which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models. Although it makes ROC-AUC and average precision scores become insignificantly higher by 0.02. Our top models such as hgb_b and dt_b at thresholds 0.50 each benefits from calibration with original brier being 0.24 and after calibration they become 0.07 which is a better result but it lowers all other metrics. So generally, calibration doesn't benefit any of our top selected models neither other models for metrics.
 
 
