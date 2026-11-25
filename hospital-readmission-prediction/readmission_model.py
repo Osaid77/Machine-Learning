@@ -397,7 +397,68 @@ perm_imp_df = pd.DataFrame({
 }).sort_values("logr_imp_m", ascending=False)
     
 print(perm_imp_df.round(3))
-    
+
+
+
+#### Testing 
+
+
+test_pipe = fitted_pipes["hgb_b"]
+
+# pipe_proba = pipe.predict_proba(X_val)[:, 1]
+
+test_proba = test_pipe.predict_proba(X_test)[:, 1]
+
+threshold = 0.50
+
+test_pred = np.where(test_proba >= threshold, 1, 0)
+
+cm = confusion_matrix(y_test, test_pred, labels=[0, 1])
+
+tn, fp, fn, tp = cm.ravel()
+
+accuracy = accuracy_score(y_test, test_pred)
+
+precision = precision_score(y_test, test_pred, zero_division=0)
+recall = recall_score(y_test, test_pred, zero_division=0)
+f1 = f1_score(y_test, test_pred, zero_division=0)
+
+specificity = tn / (tn + fp)
+
+roc_auc = roc_auc_score(y_test, test_proba)
+ap = average_precision_score(y_test, test_proba)
+
+y_true, y_pred = calibration_curve(y_test, test_proba, n_bins=5, strategy="quantile")
+brier = brier_score_loss(y_test, test_proba)
+
+results = []
+
+results.append({
+    "model": "hgb_b",
+    "thre": threshold,
+
+    "acc": accuracy,
+    "prc": precision,
+    "rec": recall,
+    "f1": f1,
+    "spc": specificity,
+    "roc": roc_auc,
+    "ap": ap,
+    "y_true": y_true.round(2),
+    "y_pred": y_pred.round(2),
+    "brier": brier,
+    "TP": tp,
+    "FP": fp,
+    "TN": tn,
+    "FN": fn
+})
+
+results_df = pd.DataFrame(results)
+
+print(results_df.round(3))
+
+results_df.to_csv("test_results.csv", index=False)
+
     
     
 
