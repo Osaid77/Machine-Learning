@@ -33,6 +33,11 @@ Clore, J., Cios, K., DeShazo, J., & Strack, B. (2014). Diabetes 130-US Hospitals
 
 
 
+# Reproducibility
+rnadom_state=42 was implemented across training, validation, and testing splitting. It's also implemented in all models training, hyperparameter tuning and stratification, and permutation importance.
+
+
+
 # Topics covered
 
 - Preprocessing techniques including imputing, scaling and one-hot encoding
@@ -158,6 +163,22 @@ However, there's a disagreement between trees feature importance and permutation
 | dt | num_lab_procedures | 0.35 | -0.015 |
 
 This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC. 
+
+
+# Test set evaluation
+
+
+# Project limitations
+- Imbalanced dataset with the positive class representing only 8.79% of the entire dataset.
+- A historical dataset: Diabetes 130-US Hospitals for Years 1999-2008
+- Weak discrimination at a range of ROC-AUC at only 0.60
+- Lack of external validation
+
+
+ # Future improvements
+ - Additional clinical predictors
+ - More thresholds to be selected like [0.08, 0.15, 0.20, 0.25]
+ - More feature engineering and external validation
 
 
 
