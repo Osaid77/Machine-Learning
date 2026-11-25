@@ -144,7 +144,6 @@ Reflecting how balanced models rely more on features with minority class.
 However, there's a disagreement between trees feature importance and permutation importance
 
 | Model | Feature | Tree importance | Permutation importance |
-| :--- | :---: | :---: | ---: |
 | dt | num_lab_procedures | 0.35 | -0.015 |
 
 This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC. 
