@@ -172,7 +172,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 # logistic regression coef interpretation
 
-## Top and bottom features for logr compared with logr_b:
+## Top and bottom features for logr and logr_b sorted by logr:
 
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
@@ -181,13 +181,14 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 | high_cardinality__apache_3j_diagnosis_102.01 | 0.664 | 0.858 | 
 | binary__ventilated_apache | 0.594 | 0.583 | 
 | binary__solid_tumor_with_metastasis | 0.549 | 0.595 | 
+
 | high_cardinality__apache_3j_diagnosis_306.01 | -0.511 | -0.688 | 
 | binary__elective_surgery | -0.529 | -0.546 | 
 | high_cardinality__apache_3j_diagnosis_410.01 | -0.564 | -0.595 |
 | high_cardinality__apache_3j_diagnosis_1206.03 | -0.599 | -0.719 |
 | high_cardinality__apache_3j_diagnosis_407.01 | -0.728 | -0.689 |
 
-## Top and bottom features for logr_b compared with logr_b:
+## Top and bottom features for logr and logr_b sorted by logr_b:
 
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
@@ -197,12 +198,11 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 | high_cardinality__apache_3j_diagnosis_nan | 0.326 | 0.641 | 
 | high_cardinality__apache_3j_diagnosis_1204.02 | 0.370 | 0.614 | 
 
-hna 
 | high_cardinality__apache_3j_diagnosis_306.01 | -0.511 | -0.688 | 
-| binary__elective_surgery | -0.529 | -0.546 | 
-| high_cardinality__apache_3j_diagnosis_410.01 | -0.564 | -0.595 |
+| high_cardinality__apache_3j_diagnosis_407.01 | -0.728 | -0.689 | 
 | high_cardinality__apache_3j_diagnosis_1206.03 | -0.599 | -0.719 |
-| high_cardinality__apache_3j_diagnosis_407.01 | -0.728 | -0.689 |
+| high_cardinality__apache_3j_diagnosis_1207.01 | -0.508 | -0.733 |
+| high_cardinality__apache_3j_diagnosis_209.01 | -0.414 | -0.805 |
 
 
 
