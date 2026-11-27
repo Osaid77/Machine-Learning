@@ -172,7 +172,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 # logistic regression coef interpretation
 
-## Top and bottom features for logr and logr_b sorted by logr:
+## Top and bottom features sorted by logr:
 
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
@@ -187,7 +187,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 | high_cardinality__apache_3j_diagnosis_1206.03 | -0.599 | -0.719 |
 | high_cardinality__apache_3j_diagnosis_407.01 | -0.728 | -0.689 |
 
-## Top and bottom features for logr and logr_b sorted by logr_b:
+## Top and bottom features sorted by logr_b:
 
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
@@ -202,8 +202,24 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 | high_cardinality__apache_3j_diagnosis_1207.01 | -0.508 | -0.733 |
 | high_cardinality__apache_3j_diagnosis_209.01 | -0.414 | -0.805 |
 
+- high_cardinality__apache_3j_diagnosis_401.01: intracranial haemorrhage or haematoma
+- high_cardinality__apache_3j_diagnosis_202.01: Respiratory arrest
+- high_cardinality__apache_3j_diagnosis_102.01: Cardiac arrest
+- high_cardinality__apache_3j_diagnosis_306.01: Bleeding, lower GI
+- high_cardinality__apache_3j_diagnosis_410.01: Coma/change in level of consciousness
+- high_cardinality__apache_3j_diagnosis_1206.03: Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
+- high_cardinality__apache_3j_diagnosis_407.01: Seizures (primary - no structural brain disease)
+- high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded record
+- high_cardinality__apache_3j_diagnosis_1204.02: Aneurysm, thoracic
+- high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
+- high_cardinality__apache_3j_diagnosis_209.01: Asthma
 
-
+- Diagnoses share the highest percentage in logistic regression ranking and there is a high correlation between the original and the balanced model.
+- logr top positive diagnoses are .... meaning ...
+- logr top negative diagnoses are .... meaning ...
+- logr_b top positive diagnoses are .... meaning ...
+- logr_b top negative diagnoses are .... meaning ...
+  
 Both models agree on top 5 positive features and bottom 5 negative features 
 
 
