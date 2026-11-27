@@ -310,7 +310,7 @@ for name, model in models.items():
     calibrated_pipes[name] = pipe_c
 
 
-    thresholds = [0.10, 0.20, 0.30, 0.50]      # I added 0.20 threshold, I wish it's good idea to test more thresholds
+    thresholds = [0.10, 0.20, 0.30, 0.50]     
 
     for threshold in thresholds:
 
