@@ -92,17 +92,22 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 # Results Interpretation
 
-- I prioritzed recall due to the sensitivity of missing TP cases.
-- The best models that combine highest recall, precision, specificity, f1, ROC-AUC, and AP are:
+- I prioritzed recall due to the sensitivity of missing TP cases as this is a mortality prediction so we should prioritize missing TP cases even though in the expense of having excessive alerts.
+- The best models that combine highest recall, precision, specificity, f1, ROC-AUC, AP, and Brier are:
 
 
 | Model | Thresh | Prc | Rec | F1 | Spec | ROC-AUC | AvgPrc |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
-| hgb_b | 0.50 | 0.11 | 0.58 | 0.19 | 0.57 | 0.60 | 0.13 |
-| hgb | 0.10 | 0.13 | 0.38 | 0.19 | 0.75 | 0.60 | 0.13 | 
-| dt_b | 0.50 | 0.11 | 0.58 | 0.18 | 0.56 | 0.59 | 0.12 |
-| logr_b | 0.50 | 0.12 | 0.46 | 0.19 | 0.67 | 0.59 | 0.13 |
-| rf | 0.1 | 0.12 | 0.39 | 0.18 | 0.72 | 0.59 | 0.13 |
+| logr | 0.10 | 0.31 | 0.74 | 0.44 | 0.84 | 0.88 | 0.52 |
+| logr_b | 0.30 | 0.20 | 0.89 | 0.33 | 0.67 | 0.88 | 0.50 | 
+| dt_b | 0.30 | 0.188 | 0.86 | 0.31 | 0.65 | 0.85 | 0.41 |
+| rf | 0.10 | 0.286 | 0.78 | 0.419 | 0.81 | 0.88 | 0.52 |
+| rf_b | 0.30 | 0.218 | 0.89 | 0.35 | 0.699 | 0.886 | 0.51 |
+| hgb | 0.10 | 0.32 | 0.777 | 0.457 | 0.847 | 0.894 | 0.56 |
+| hgb_b | 0.20 | 0.185 | 0.93 | 0.309 | 0.61 | 0.89 | 0.55 |
+| hgb_b | 0.50 | 0.305 | 0.78 | 0.439 | 0.83 | 0.89 | 0.55 |
+
+
 
 ### Balanced gradient boosting and decision tree at threshold 0.50 both show good recall at 0.58 but low precision at only 0.11 i.e. they spot 58% of positive cases but 11 out of 100 positive alerts are actually true positives. 
 
