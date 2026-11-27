@@ -92,7 +92,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 # Results Interpretation
 
-- I prioritzed recall due to the sensitivity of missing TP cases as this is a mortality prediction so we should prioritize missing TP cases even though in the expense of having excessive alerts.
+- I prioritzed recall due to the sensitivity of missing TP alerts as this is a mortality prediction so we should prioritize not missing TP cases and minimize FN even in the expense of having excessive alerts.
 - The best models that combine highest recall, precision, specificity, f1, ROC-AUC, AP, and Brier are:
 
 
@@ -107,7 +107,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 | hgb_b | 0.20 | 0.185 | 0.93 | 0.309 | 0.61 | 0.89 | 0.55 | 0.11 |
 | hgb_b | 0.50 | 0.305 | 0.78 | 0.439 | 0.83 | 0.89 | 0.55 | 0.11 |
 
-### - The choice here is difficult because there are many good models but generally the original hgb at threshold 0.10 is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score. 
+### - The choice here is difficult because there are many good models with tempting high recall values but generally the original hgb at threshold 0.10 is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score. 
 ### It displays the highest F1, ROC-AUC, Average prec, and specificity, and lowest Brier score among all competitor models. It's the model of choice as it balances all competitor models perfectly. 
 
 ### - Other competitor models include the highest recall models, outperforming the recall of hgb are: 
@@ -115,9 +115,9 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 - rf_b at thre 0.30 showing recall 0.89
 - logr_b at thre 0.30 showing recall 0.89
 - dt_b at thre 0.30 showing recall 0.86
-### Unfortunately, all of them show a weak precision at range 0.18-0.20 which hgb outperforms. Also, hgb outperforms them in F1, specificity, ROC-AUC, and Average precision. 
+### Unfortunately, all of them show a weak precision at range of 0.18-0.20 which hgb outperforms. Also, hgb outperforms them in F1, specificity, ROC-AUC, Average precision, and Brier score. 
 
-### Other competitor models but are outperformed by hgb in every other metric are: 
+### Other competitor models but are outperformed by hgb in every metric are: 
 - logr thre 0.10 
 - rf thre 0.10
 - hgb_b thre 0.50
@@ -128,15 +128,17 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 
 ## Threshold Interpretation
-- Thresholds 0.50, and 0.10 shows the best performance among all thresholds across all models especially our selected shortlisted models.
-- However, all balanced models achieved best results with threshold 0.50. Meanwhile, original models achieved best results at threshold 0.10. 
+- Thresholds 0.10, and 0.30 show the best performance among all thresholds across all models especially our selected shortlisted models.
+- 0.10 threshold in particular shows the highest recall among other thresholds within same model e.g. hgb threshold 0.10 has higher recall than hgb thresholds 0.20, 0.30, and 0.50.
+- However, as the threshold increases, the precision increases, specificity increases, but recall decreases. This applies to all models. 
+- Generally, all balanced models achieved best results with thresholds 0.30 and 0.50. Meanwhile, original models achieved best results at thresholds 0.10 and 0.20. 
 
 
 
 ## Class balancing Interpretation
-- The balanced models generally produce better outcomes due to their attention on the minority positive class that represents only 8.79% and giving it more weight contribution.
+- Even though class balance gives more attention & weight contribution to minority positive class which only represents 8.63% in our dataset, balanced models tend to perform pretty similar to original models in our project. Balanced models tend to produce higher recall but in the expense of lower precision.  
 
-
+# hna wslna: here next:
 
 ## Calibration interpretation
 - Calibration generally produces slightly lower Brier scores for calibrated models meaning it improves probability quality which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models.
