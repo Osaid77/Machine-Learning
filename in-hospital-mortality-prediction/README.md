@@ -17,7 +17,7 @@ In-hospital mortality is widely common after being hospitalized for certain amou
 - Instances: 91713
 - No duplicates exist
 - Features: 186
-- Examined each of the 186 features based on which ones are appropriate from clinical sense perspective, value counts, missingness percentage, skewness, equality, and correlation.
+- Examined each of the 186 features based on which ones are appropriate from clinical sense perspective, value counts, missingness percentage, skewness, equality, and correlation. Only kept the most relevant ones for predictions.
 - Features used in this project are 109 in total:
 - categorical_features = ["gender", "hospital_admit_source", "icu_admit_source", "apache_3j_bodysystem", "apache_2_bodysystem"] # 5
 - numerical_features = ["age", "bmi", "pre_icu_los_days", "bun_apache", "creatinine_apache", "glucose_apache", "heart_rate_apache", "hematocrit_apache", 
