@@ -107,6 +107,9 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 | hgb_b | 0.20 | 0.185 | 0.93 | 0.309 | 0.61 | 0.89 | 0.55 | 0.11 |
 | hgb_b | 0.50 | 0.305 | 0.78 | 0.439 | 0.83 | 0.89 | 0.55 | 0.11 |
 
+### The choice here is difficult because there are many good models but generally 
+
+
 
 
 ### Balanced gradient boosting and decision tree at threshold 0.50 both show good recall at 0.58 but low precision at only 0.11 i.e. they spot 58% of positive cases but 11 out of 100 positive alerts are actually true positives. 
