@@ -113,7 +113,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 ### It displays the highest F1, ROC-AUC, Average prec, and specificity, and lowest Brier score among all competitor models. It's the model of choice as it balances all competitor models perfectly. Its calibrated version just below it competes strongly with it but we cannot choose it because it provides lower recall which is our #1 metric.
 
 ### - Other competitor models include the highest recall models, outperforming the recall of hgb are: 
-- hgb_b at thre 0.20 showing recall 0.93
+- hgb_b at thre 0.20 showing recall 0.93. Its calibrated version is so tempting showing the highest precision in the list at 0.42
 - rf_b at thre 0.30 showing recall 0.89
 - logr_b at thre 0.30 showing recall 0.89
 - dt_b at thre 0.30 showing recall 0.86
