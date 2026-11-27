@@ -7,7 +7,8 @@ Class imbalance is spotted as the positive class labels represents only 8.63% of
 
 # Clinical problem & objective
 
-Many patients get readmitted after being hospitalized for certain amount of time. I built a model to predict whether a patient will be readmitted within 30 days after being discharged using many features categorical and numerical ones.
+In-hospital mortality is widely common after being hospitalized for certain amount of time. I built a model to predict whether a patient will experience mortality within and after 24 hours of admission using a variety of features including categorical, numerical, binary, ordinal, and high-cardinality features.
+
 
 
 # Dataset description
@@ -16,7 +17,8 @@ Many patients get readmitted after being hospitalized for certain amount of time
 - Instances: 91713
 - No duplicates exist
 - Features: 186
-- Features used in this project are 109 in total combining numerical, categorical, high-cardinality, binary, and ordinal features:
+- Examined each of the 186 features based on which ones are appropriate from clinical sense perspective, value counts, missingness percentage, skewness, equality, and correlation.
+- Features used in this project are 109 in total:
 - categorical_features = ["gender", "hospital_admit_source", "icu_admit_source", "apache_3j_bodysystem", "apache_2_bodysystem"] # 5
 - numerical_features = ["age", "bmi", "pre_icu_los_days", "bun_apache", "creatinine_apache", "glucose_apache", "heart_rate_apache", "hematocrit_apache", 
     "map_apache", "resprate_apache", "sodium_apache", "temp_apache", "urineoutput_apache", "wbc_apache", "d1_diasbp_max", "d1_diasbp_min", 
@@ -43,8 +45,9 @@ Lee, Meredith, et al. "WiDS (Women in Data Science) Datathon 2020: ICU Mortality
 # Data preparation & leakage prevention
 
 - No duplicates exist in the data
-- Splitting before preprocessing as I do stratification which preserves approximately the same class proportions among training, validation and testing set. So, the positive class becomes 8.79% among all sets.
+- Splitting before preprocessing as I do stratification which preserves approximately the same class proportions among training, validation and testing set. So, the positive class becomes 8.63% among all sets.
 - fitting transformation on training data only
+- Separated the preprocessing of each of the feature categories: numerical, categorical, binary, high-cardinality, and ordinal features. Each in its own preprocessing pipeline.
 
 
 # Technologies
@@ -59,9 +62,9 @@ Lee, Meredith, et al. "WiDS (Women in Data Science) Datathon 2020: ICU Mortality
 | Step | Instruction |
 | :--- | ---: |
 | 1 | Download the dataset | 
-| 2 | Place diabetic_data.csv inside the project folder | 
+| 2 | Place training_v2.csv inside the project folder | 
 | 3 | Install dependencies using pip install -r requirements.txt | 
-| 4 | Execute the script using Python readmission_model.py
+| 4 | Execute the script using Python mortality_model.py
 
 
 
