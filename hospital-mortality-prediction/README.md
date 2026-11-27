@@ -1,7 +1,7 @@
 # Project overview
 
 A machine learning model to Predict in-hospital mortality using clinical information collected within first 24 hours of hospitalization. I use multiple classifiers to predict our target including the dummy classifier.
-Data is split into 70% training, 15% validation, and 15% for testing and only 1 record per patient is allowed.
+Data is split into 70% training, 15% validation, and 15% for testing and data is already unique i.e. each record represents a different patient.
 Class imbalance is spotted as the positive class labels represents only 8.63% of the dataset.
 
 
