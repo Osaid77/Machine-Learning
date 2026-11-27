@@ -147,15 +147,16 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 - It doesn't add any benefit to our model of choice: hgb at thre 0.10.
 
 
-# hna wslna: here next:
 
 # Clinical deployment
-Choosing the best model depends on requirements like:
-- highest accepted Positive alerts number that combines TP and FP, we need to understand what makes an alert fatigue from excessive FP.
-- Consequences of missing TP cases. So, we need to know total number of missed positive cases that can be accommodated.
-- External validation using patients from other hospitals
+Choosing the best model depends on clinical engineering judgement and requirements like:
+- highest accepted Positive alerts number that combines TP and FP, we need to understand what makes an alert fatigue from excessive FP alerts.
+- Consequences of missing TP cases. So, we need to know total number of missed positive cases that can be accommodated especially in such a sensitive case like mortality.
+- External validation using patients from other hospitals.
 - Clinical deployment also relies on data quality and representativeness, security, hospital requirements and more validation procedures.
 
+
+# hna wslna: here next:
 
 
 # Hyperparamter Tuning
