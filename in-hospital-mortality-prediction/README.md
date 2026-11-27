@@ -156,8 +156,6 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - Clinical deployment also relies on data quality and representativeness, security, hospital requirements and more validation procedures.
 
 
-# hna wslna: here next:
-
 
 # Hyperparamter Tuning
 - The parameters of our top models that provided best scores are:
@@ -169,8 +167,49 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 
 
+# hna wslna: here next:
+
 
 # logistic regression coef interpretation
+
+## Top and bottom features for logr compared with logr_b:
+
+| Feature | logr_coeff | logr_b_coeff |
+| :--- | :---: | ---: |
+| high_cardinality__apache_3j_diagnosis_401.01 | 0.725 | 0.756 |
+| high_cardinality__apache_3j_diagnosis_202.01 | 0.679 | 0.798 | 
+| high_cardinality__apache_3j_diagnosis_102.01 | 0.664 | 0.858 | 
+| binary__ventilated_apache | 0.594 | 0.583 | 
+| binary__solid_tumor_with_metastasis | 0.549 | 0.595 | 
+| high_cardinality__apache_3j_diagnosis_306.01 | -0.511 | -0.688 | 
+| binary__elective_surgery | -0.529 | -0.546 | 
+| high_cardinality__apache_3j_diagnosis_410.01 | -0.564 | -0.595 |
+| high_cardinality__apache_3j_diagnosis_1206.03 | -0.599 | -0.719 |
+| high_cardinality__apache_3j_diagnosis_407.01 | -0.728 | -0.689 |
+
+## Top and bottom features for logr_b compared with logr_b:
+
+| Feature | logr_coeff | logr_b_coeff |
+| :--- | :---: | ---: |
+| high_cardinality__apache_3j_diagnosis_102.01 | 0.664 | 0.858 |
+| high_cardinality__apache_3j_diagnosis_202.01 | 0.679 | 0.798 | 
+| high_cardinality__apache_3j_diagnosis_401.01 | 0.725 | 0.756 | 
+| high_cardinality__apache_3j_diagnosis_nan | 0.326 | 0.641 | 
+| high_cardinality__apache_3j_diagnosis_1204.02 | 0.370 | 0.614 | 
+
+hna 
+| high_cardinality__apache_3j_diagnosis_306.01 | -0.511 | -0.688 | 
+| binary__elective_surgery | -0.529 | -0.546 | 
+| high_cardinality__apache_3j_diagnosis_410.01 | -0.564 | -0.595 |
+| high_cardinality__apache_3j_diagnosis_1206.03 | -0.599 | -0.719 |
+| high_cardinality__apache_3j_diagnosis_407.01 | -0.728 | -0.689 |
+
+
+
+Both models agree on top 5 positive features and bottom 5 negative features 
+
+
+
 
 number_inpatient is the highest feature for both logr and logr_b indicating the number of previous hospitalizations is associated with our target class the most, as it increases, so is the chance of readmission does. The more previous hospitalizations, the higher the change of a readmission within 30 days.
 
