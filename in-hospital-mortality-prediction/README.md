@@ -107,7 +107,8 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 | hgb_b | 0.20 | 0.185 | 0.93 | 0.309 | 0.61 | 0.89 | 0.55 | 0.11 |
 | hgb_b | 0.50 | 0.305 | 0.78 | 0.439 | 0.83 | 0.89 | 0.55 | 0.11 |
 
-### The choice here is difficult because there are many good models but generally 
+### - The choice here is difficult because there are many good models but generally the original hgb at threshold 0.10 is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score. 
+### It displays the highest F1, ROC-AUC, Average prec, and specificity, lowest Brier score among all competitor models.  
 
 
 
