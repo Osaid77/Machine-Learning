@@ -161,10 +161,12 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 # Hyperparamter Tuning
 - The parameters of our top models that provided best scores are:
-- hgb_b threshold 0.50: 'model__max_leaf_nodes': 10, 'model__max_iter': 150, 'model__learning_rate': 0.05. indicating that the middle balance is the best balance in gradient boosting for our 10 iterations.
-- dt_b threshold 0.50: 'model__max_depth': 5, 'model__min_samples_leaf': 10. This is the lowest measurement for both metrics indicating that as we go with higher values, overfitting could happen.
-- logr_b at threshold 0.50: 'model__C': 0.1. This is the highest regualarization implemented and it indicate logistic regression produces best results when regularized more. 
-- rf at threshold 0.1: 'model__n_estimators': 200, 'model__min_samples_leaf': 30, 'model__max_depth': 15. All these represent the highest values indicating the increase of trees and minimum samples per leaf and the more depth in rf, the more accurate results will be produced.
+- hgb threshold 0.10: 'model__max_leaf_nodes': 30, 'model__max_iter': 150, 'model__learning_rate': 0.05. indicating that the middle balance is the best balance in gradient boosting for our 10 iterations in RandomizedSearchCV.
+- All other hgb original & calibrated threshold 0.20 and hgb_b at thre 0.50: 'model__max_leaf_nodes': 20, 'model__max_iter': 100, 'model__learning_rate': 0.1. indicating the best balance at threshold 0.20 is also the middle balance.
+- rf models all achieved best results at: 'model__n_estimators': 200, 'model__min_samples_leaf': 10, 'model__max_depth': 15. All these represent the highest values except min_samples_leaf which is the loest value we tested. This indicates the increase of trees and the more depth in rf with low minimum samples per leaf, the more accurate results will be produced.
+- dt_b threshold 0.30: 'model__max_depth': 5, 'model__min_samples_leaf': 20. This is the lowest depth and highest samples per leaf in all decision tree models for both metrics indicating that as we go with with high depth, overfitting could happen. Also, preferring mixing low depth with highest samples per leaf to learn more about the data.
+- logr_b at threshold 0.30 and logr models: 'model__C': 0.1. This is the highest regularization implemented and it indicates that all logistic regression models produce best results when regularized more.
+
 
 
 
