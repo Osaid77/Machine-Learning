@@ -107,33 +107,24 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 | hgb_b | 0.20 | 0.185 | 0.93 | 0.309 | 0.61 | 0.89 | 0.55 | 0.11 |
 | hgb_b | 0.50 | 0.305 | 0.78 | 0.439 | 0.83 | 0.89 | 0.55 | 0.11 |
 
- - The choice here is difficult because there are many good models but generally the original hgb at threshold 0.10 is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score.
-It displays the highest F1, ROC-AUC, Average prec, and specificity, and lowest Brier score among all competitor models. It's the model of choice as it balances all competitor models perfectly. 
+### - The choice here is difficult because there are many good models but generally the original hgb at threshold 0.10 is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score. 
+### It displays the highest F1, ROC-AUC, Average prec, and specificity, and lowest Brier score among all competitor models. It's the model of choice as it balances all competitor models perfectly. 
 
-### - Other competitor models include the highest recall models and outperforming the recall of hgb are: 
+### - Other competitor models include the highest recall models, outperforming the recall of hgb are: 
 - hgb_b at thre 0.20 showing recall 0.93
 - rf_b at thre 0.30 showing recall 0.89
 - logr_b at thre 0.30 showing recall 0.89
 - dt_b at thre 0.30 showing recall 0.86
-### Unfortunately, all of them show a weak precision at range 0.18-0.20. They're also outperformed by hgb in F1, specificity, ROC-AUC, and Average precision. 
+### Unfortunately, all of them show a weak precision at range 0.18-0.20 which hgb outperforms. Also, hgb outperforms them in F1, specificity, ROC-AUC, and Average precision. 
 
 ### Other competitor models but are outperformed by hgb in every other metric are: 
 - logr thre 0.10 
 - rf thre 0.10
 - hgb_b thre 0.50
 
+### All models however display good discrimination at ROC-AUC 0.88-0.89 for most models. 
 
-
-
-### Balanced gradient boosting and decision tree at threshold 0.50 both show good recall at 0.58 but low precision at only 0.11 i.e. they spot 58% of positive cases but 11 out of 100 positive alerts are actually true positives. 
-
-### Balanced logistic regression at threshold 0.50 shows slightly lower recall than the balanced gradient boosting and decision tree but it shows higher specificity.
-
-### Random forest at threshold 0.1 has the highest specificity of 0.72 among all models with an acceptable precision, recall. It's the model of choice if we care about TN the most.
-
-### All models however display weak discrimination at only 0.59 ROC-AUC. 
-
-### Dummy classifier was outperformed by all our models. Even though it displayed accuracy of 0.912 which is the highest accuracy among all models, it showed 0 recall and precision with 0.50 ROC-AUC which is also the lowest. That's why accuracy alone is misleading when interpreted alone. 
+### Dummy classifier was outperformed by all our models. Even though it displayed accuracy of 0.914 which is the highest accuracy among all models, it showed 0 recall and precision with 0.50 ROC-AUC which is also the lowest. That's why accuracy alone is misleading when interpreted alone. 
 
 
 ## Threshold Interpretation
