@@ -211,7 +211,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
 - high_cardinality__apache_3j_diagnosis_209.01: Asthma
 
-- Among all 109 features, "apache_3j_diagnosis" share the highest percentage in logistic regression ranking. Generally, there is a high correlation between the original and the balanced logr.
+- Among all 109 features including labs, vitals, demographics and others, feature "apache_3j_diagnosis" share the highest percentage in logistic regression ranking. Generally, there is a high correlation between the original and the balanced logr.
 - logr top positive diagnoses in order are intracranial haemorrhage, respiratory arrest, cardiac arrest, ventilated apache/receiving ventilation, tumor with metastasis meaning they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. The higher the number is, the more association with mortality. The lower the number is, the lower association.
 - logr top negative diagnoses in order are seizure without structural brain disease, Coronary Artery Bypass Graft (CABG) with single valve repair or replacement, Coma/change in level of consciousness, elective/non-urgent surgery, and bleeding/lower GI meaning they're the least associated with our target class of in-hospital mortality. The more negative the number is, the less the association with mortality. The less negative the number is, the less is the association. 
 
@@ -240,9 +240,14 @@ Both models share an extreme correlation in positive and negative features. Howe
 | numerical__apache_4a_icu_death_prob | -0.077 | 0.014 | 
 | high_cardinality__apache_3j_diagnosis_204.01 | -0.061 | 0.092 | 
 
-- Some of the most prominent positive features for logr and negative for logr_b are:
-- Those features are more likely associated with mortality for original logr but not associated with mortality in balanced logr.
-- Some of the most prominent negative features for logr and positive for logr_b are: 
+- high_cardinality__apache_3j_diagnosis_204.01: ARDS — Acute Respiratory Distress Syndrome / non-cardiogenic pulmonary edema
+- high_cardinality__apache_3j_diagnosis_211.09: Respiratory disorder, other
+
+- Some of the most prominent positive features for logr and negative for logr_b are: hematocrit_apache, bilirubin_apache, d1_spo2_min i.e. lowest oxygen saturation measured in first 24 hours, h1_glucose_max i.e. highest glucose measured in first hour, d1_potassium_min i.e. lowest potassium measured in first 24 hours. Those features are more likely associated with mortality for original logr but NOT associated with mortality in balanced logr.
+- Some of the most prominent negative features for logr and positive for logr_b are: ARDS — Acute Respiratory Distress Syndrome / non-cardiogenic pulmonary edema, hospital_admit_source_Emergency Department, apache_3j_bodysystem_Sepsis i.e. diagnosed as sepsis case, and Respiratory disorder, other. Those features are more likely associated with mortality for balanced logr but NOT associated with mortality in original logr.
+- Gender difference is as follows:
+- Original logr: negative for both male and female, meaning neither genders is associated with increased mortality i.e. gender doesn't play a role in mortality prediction and male gender is more likely associated with mortality because it demonstrates less negative coefficient. 
+- Balanced logr: positive for both male and female, meaning both genders are associated with increased mortality i.e. gender plays a role in mortality prediction and male gender is more like associated with mortality because it demonstrates higher positive value.  
 
 
 number_inpatient is the highest feature for both logr and logr_b indicating the number of previous hospitalizations is associated with our target class the most, as it increases, so is the chance of readmission does. The more previous hospitalizations, the higher the change of a readmission within 30 days.
