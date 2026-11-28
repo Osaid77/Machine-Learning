@@ -18,24 +18,18 @@ In-hospital mortality is widely common after being hospitalized for certain amou
 - No duplicates exist
 - Total Features in the dataset: 186
 - Examined each of the 186 features based on which ones are appropriate from clinical sense perspective, value counts, missingness percentage, skewness, equality, and correlation. Only kept the most relevant ones for predictions.
-- Features used in this project are 109 in total:
-- categorical_features = ["gender", "hospital_admit_source", "icu_admit_source", "apache_3j_bodysystem", "apache_2_bodysystem"] # 5
-- numerical_features = ["age", "bmi", "pre_icu_los_days", "bun_apache", "creatinine_apache", "glucose_apache", "heart_rate_apache", "hematocrit_apache", 
-    "map_apache", "resprate_apache", "sodium_apache", "temp_apache", "urineoutput_apache", "wbc_apache", "d1_diasbp_max", "d1_diasbp_min", 
-    "d1_diasbp_noninvasive_min", "d1_heartrate_max", "d1_heartrate_min", "d1_mbp_max", "d1_mbp_min", "d1_mbp_noninvasive_min", "d1_resprate_max", "d1_resprate_min", "d1_spo2_min", "d1_sysbp_max", "d1_sysbp_min", 
-    "d1_sysbp_noninvasive_max", "d1_sysbp_noninvasive_min", "d1_temp_max", "d1_temp_min", "h1_diasbp_max", "h1_diasbp_min", "h1_diasbp_noninvasive_max", 
-    "h1_diasbp_noninvasive_min", "h1_heartrate_max", "h1_heartrate_min", "h1_mbp_max", "h1_mbp_min", "h1_mbp_noninvasive_max", "h1_mbp_noninvasive_min", 
-    "h1_resprate_max", "h1_resprate_min", "h1_spo2_max", "h1_spo2_min", "h1_sysbp_max", "h1_sysbp_min", "h1_sysbp_noninvasive_max", "h1_sysbp_noninvasive_min", 
-    "h1_temp_max", "h1_temp_min", "d1_albumin_min", "d1_bun_max", "d1_calcium_max", "d1_calcium_min", "d1_creatinine_max", "d1_creatinine_min", 
-    "d1_glucose_max", "d1_glucose_min", "d1_hco3_max", "d1_hco3_min", "d1_hemaglobin_min", "d1_hematocrit_min", "d1_platelets_min", "d1_potassium_max", 
-    "d1_potassium_min", "d1_sodium_max", "d1_sodium_min", "d1_wbc_min", "apache_4a_hospital_death_prob", "apache_4a_icu_death_prob", "bilirubin_apache", "d1_bilirubin_max",
-    "h1_glucose_max", "h1_glucose_min", "d1_arterial_pco2_max", "d1_arterial_pco2_min", "d1_arterial_ph_max", "d1_arterial_ph_min", "d1_arterial_po2_max", 
-    "d1_arterial_po2_min", "paco2_apache", "pao2_apache", "d1_lactate_max", "d1_inr_max", "d1_inr_min"]    # 86 
-- binary_features = ["elective_surgery", "ventilated_apache", "arf_apache", "apache_post_operative", "gcs_unable_apache", "aids", "cirrhosis", 
-                   "diabetes_mellitus", "hepatic_failure", "immunosuppression", "leukemia", "lymphoma", "solid_tumor_with_metastasis", "intubated_apache"]  # 14
-- high_cardinality_features = ["apache_3j_diagnosis"] # 1
-- ordinal_features = ["gcs_eyes_apache", "gcs_motor_apache", "gcs_verbal_apache"] # 3
-- Limitation: only 109 features were chosen out of 186 and there is very minor redundancy within features 
+- Features used in this project are 109 in total including categorical, numerical, binary, high-cardinality, and ordinal features. They span demographic, lab, vitals, probabilities, and diagnoses.
+
+| Feature group | Count | Examples |
+| :--- | :---: | ---: |
+| Categorical | 5 | gender, admission source, body system |
+| Numerical | 86 | age, creatinine, lactate, blood pressure, glucose, sodium | 
+| Binary | 14 | Ventilation, intubation, comorbidities | 
+| Ordinal | 3 | GCS eye, verbal and motor scores | 
+| High-cardinality | 1 | APACHE III diagnosis | 
+| Total | 109 |  | 
+
+- Limitation: only 109 features were chosen out of 186 and there is a minor redundancy within those selected features 
 - Target: Mortality within hospitalization
 - Target percentage: 8.63%
 - Features like "apache_4a_icu_death_prob" and "apache_4a_hospital_death_prob" included -1 probability for approx. 2000 records for each. I replaced -1 with the median probability as there was some skewness spotted and mean was inappropriate to be used
@@ -106,27 +100,27 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 | rf_b | 0.30 | 0.218 | 0.89 | 0.35 | 0.699 | 0.886 | 0.51 | 0.10 |
 | hgb | 0.10 | 0.32 | 0.777 | 0.457 | 0.847 | 0.894 | 0.56 | 0.054 |
 | hgb_b | 0.20 | 0.185 | 0.93 | 0.309 | 0.61 | 0.89 | 0.55 | 0.11 |
-| hgb_b_c | 0.20 | 0.424 | 0.636 | 0.509 | 0.918 | 0.89 | 0.548 | 0.54 |
+| hgb_b_c | 0.20 | 0.424 | 0.636 | 0.509 | 0.918 | 0.89 | 0.548 | 0.054 |
 | hgb_b | 0.50 | 0.305 | 0.78 | 0.439 | 0.83 | 0.89 | 0.55 | 0.11 |
 
-### - The choice here is difficult because there are many good models with tempting high recall values but generally the original hgb at threshold 0.10 with its calibrated version is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score. 
-### It displays the highest F1, ROC-AUC, Average prec, and specificity, and lowest Brier score among all competitor models shown. It's the model of choice as it balances all competitor models perfectly. Its calibrated version just below it competes strongly with it as it provides slightly higher ROC-AUC and AP and slightly lower Brier score.
+### The choice here is difficult because there are many good models with tempting high recall values but generally the original hgb at threshold 0.10 with its calibrated version is the most promising, at 0.77 recall, 0.32 precision, 0.45 F1, 0.84 specificity, 0.89 ROC-AUC, 0.56 Average precision, and 0.054 Brier score. 
+### It displays the highest F1, ROC-AUC, Average prec, and specificity, and lowest Brier score among all competitor models shown. It's the model of choice as it balances all metrics perfectly. Its calibrated version just below it competes strongly with it as it provides slightly higher ROC-AUC and AP and slightly lower Brier score.
 
-### - Other competitor models include the highest recall models, outperforming the recall of hgb are: 
-- hgb_b at thre 0.20 showing recall 0.93. Its calibrated version is so tempting showing the highest precision in the list at 0.42
+### Other competitor models include the highest recall models, outperforming the recall of hgb are: 
+- hgb_b at thre 0.20 showing recall 0.93. Its calibrated version is so tempting to choose showing the highest precision in the list at 0.42
 - rf_b at thre 0.30 showing recall 0.89
 - logr_b at thre 0.30 showing recall 0.89
 - dt_b at thre 0.30 showing recall 0.86
 ### Unfortunately, all of them show a weak precision at range of 0.18-0.20 which hgb outperforms. Also, hgb outperforms them in F1, specificity, ROC-AUC, Average precision, and Brier score. 
 
-### Other competitor models but are outperformed by hgb in every metric are: 
+### Other competitor models but are outperformed by hgb in most metrics are: 
 - logr thre 0.10 
 - rf thre 0.10
 - hgb_b thre 0.50
 
 ### All models however display good discrimination at ROC-AUC 0.88-0.89 for most models. 
 
-### Dummy classifier was outperformed by all our models. Even though it displayed accuracy of 0.914 which is the highest accuracy among all models, it showed 0 recall and precision with 0.50 ROC-AUC which is also the lowest. That's why accuracy alone is misleading when interpreted alone. 
+### Dummy classifier was outperformed by all our models. Even though it displayed accuracy of 0.914 which is one of the highest accuracies among all models, it showed 0 recall and precision with 0.50 ROC-AUC which is also the lowest. That's why accuracy alone is misleading when interpreted alone. 
 
 
 ## Threshold Interpretation
