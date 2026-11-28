@@ -225,10 +225,23 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 Both models share an extreme correlation in positive and negative features. However, they disagree on few features such as:
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
-| high_cardinality__apache_3j_diagnosis_401.01 | 0.725 | 0.756 |
-| high_cardinality__apache_3j_diagnosis_202.01 | 0.679 | 0.798 | 
-| high_cardinality__apache_3j_diagnosis_102.01 | 0.664 | 0.858 | 
-| binary__ventilated_apache | 0.594 | 0.583 | 
+| numerical__missingindicator_apache_4a_hospital_death_prob | 0.078 | -0.044 |
+| numerical__hematocrit_apache | 0.063 | -0.010 | 
+| numerical__missingindicator_d1_spo2_min | 0.017 | -0.003 | 
+| numerical__h1_glucose_max | 0.015 | -0.027 | 
+| numerical__bilirubin_apache | 0.015 | -0.009 | 
+| numerical__d1_potassium_min | 0.011 | -0.009 | 
+| numerical__missingindicator_d1_wbc_min | 0.008 | -0.060 | 
+| numerical__missingindicator_d1_resprate_max | 0.007 | -0.001 | 
+| numerical__missingindicator_d1_resprate_min | 0.007 | -0.001 | 
+| categorical__gender_F | -0.321 | 0.041 | 
+| categorical__gender_M | -0.289 | 0.093 | 
+| high_cardinality__apache_3j_diagnosis_211.09 | -0.232 | 0.037 | 
+| categorical__apache_3j_bodysystem_Sepsis | -0.115 | 0.003 | 
+| categorical__hospital_admit_source_Emergency Department | -0.107 | 0.013 | 
+| numerical__missingindicator_apache_4a_icu_death_prob | -0.094 | 0.012 | 
+| numerical__apache_4a_icu_death_prob | -0.077 | 0.014 | 
+| high_cardinality__apache_3j_diagnosis_204.01 | -0.061 | 0.092 | 
 
 
 
