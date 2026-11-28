@@ -16,7 +16,7 @@ In-hospital mortality is widely common after being hospitalized for certain amou
 - Dataset: WiDS Datathon 2020: ICU Mortality Prediction. 
 - Instances: 91713
 - No duplicates exist
-- Features: 186
+- Total Features in the dataset: 186
 - Examined each of the 186 features based on which ones are appropriate from clinical sense perspective, value counts, missingness percentage, skewness, equality, and correlation. Only kept the most relevant ones for predictions.
 - Features used in this project are 109 in total:
 - categorical_features = ["gender", "hospital_admit_source", "icu_admit_source", "apache_3j_bodysystem", "apache_2_bodysystem"] # 5
@@ -199,21 +199,21 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 | high_cardinality__apache_3j_diagnosis_1207.01 | -0.508 | -0.733 |
 | high_cardinality__apache_3j_diagnosis_209.01 | -0.414 | -0.805 |
 
-high_cardinality__apache_3j_diagnosis_401.01: intracranial haemorrhage or haematoma
-high_cardinality__apache_3j_diagnosis_202.01: Respiratory arrest
-high_cardinality__apache_3j_diagnosis_102.01: Cardiac arrest
-high_cardinality__apache_3j_diagnosis_306.01: Bleeding, lower GI
-high_cardinality__apache_3j_diagnosis_410.01: Coma/change in level of consciousness
-high_cardinality__apache_3j_diagnosis_1206.03: Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
-high_cardinality__apache_3j_diagnosis_407.01: Seizures (primary - no structural brain disease)
-high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded diagnosis
-high_cardinality__apache_3j_diagnosis_1204.02: Aneurysm, thoracic
-high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
-high_cardinality__apache_3j_diagnosis_209.01: Asthma
+- high_cardinality__apache_3j_diagnosis_401.01: intracranial haemorrhage or haematoma
+- high_cardinality__apache_3j_diagnosis_202.01: Respiratory arrest
+- high_cardinality__apache_3j_diagnosis_102.01: Cardiac arrest
+- high_cardinality__apache_3j_diagnosis_306.01: Bleeding, lower GI
+- high_cardinality__apache_3j_diagnosis_410.01: Coma/change in level of consciousness
+- high_cardinality__apache_3j_diagnosis_1206.03: Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
+- high_cardinality__apache_3j_diagnosis_407.01: Seizures (primary - no structural brain disease)
+- high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded diagnosis
+- high_cardinality__apache_3j_diagnosis_1204.02: Aneurysm, thoracic
+- high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
+- high_cardinality__apache_3j_diagnosis_209.01: Asthma
 
-- Diagnoses share the highest percentage in logistic regression ranking and there is a high correlation between the original and the balanced model.
-- logr top positive diagnoses in order are intracranial haemorrhage, respiratory arrest, cardiac arrest, ventilated apache/receiving ventilation, tumor with metastasis meaning they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. 
-- logr top negative diagnoses in order are seizure without structural brain disease, Coronary Artery Bypass Graft (CABG) with single valve repair or replacement, Coma/change in level of consciousness, elective/non-urgent surgery, and bleeding/lower GI meaning they're the least associated with our target class of in-hospital mortality.
+- Among all 109 features, "apache_3j_diagnosis" share the highest percentage in logistic regression ranking. Generally, there is a high correlation between the original and the balanced logr.
+- logr top positive diagnoses in order are intracranial haemorrhage, respiratory arrest, cardiac arrest, ventilated apache/receiving ventilation, tumor with metastasis meaning they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. The higher the number is, the more association with mortality. The lower the number is, the lower association.
+- logr top negative diagnoses in order are seizure without structural brain disease, Coronary Artery Bypass Graft (CABG) with single valve repair or replacement, Coma/change in level of consciousness, elective/non-urgent surgery, and bleeding/lower GI meaning they're the least associated with our target class of in-hospital mortality. The more negative the number is, the less the association with mortality. The less negative the number is, the less is the association. 
 
 - logr_b top positive diagnoses are cardiac arrest, respiratory arrest, intracranial hemorrhage, Missing/unrecorded diagnosis, and Aneurysm, thoracic.
 - logr_b top negative diagnoses are Asthma, Coronary artery bypass graft (CABG) with valve repair or replacement, CABG with single valve repair or replacement, Seizures without structural brain disease, Bleeding lower GI
