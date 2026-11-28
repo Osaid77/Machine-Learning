@@ -167,9 +167,6 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 
 
-# hna wslna: here next:
-
-
 # logistic regression coef interpretation
 
 ## Top and bottom features sorted by logr:
@@ -202,17 +199,17 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 | high_cardinality__apache_3j_diagnosis_1207.01 | -0.508 | -0.733 |
 | high_cardinality__apache_3j_diagnosis_209.01 | -0.414 | -0.805 |
 
-- high_cardinality__apache_3j_diagnosis_401.01: intracranial haemorrhage or haematoma
-- high_cardinality__apache_3j_diagnosis_202.01: Respiratory arrest
-- high_cardinality__apache_3j_diagnosis_102.01: Cardiac arrest
-- high_cardinality__apache_3j_diagnosis_306.01: Bleeding, lower GI
-- high_cardinality__apache_3j_diagnosis_410.01: Coma/change in level of consciousness
-- high_cardinality__apache_3j_diagnosis_1206.03: Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
-- high_cardinality__apache_3j_diagnosis_407.01: Seizures (primary - no structural brain disease)
-- high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded diagnosis
-- high_cardinality__apache_3j_diagnosis_1204.02: Aneurysm, thoracic
-- high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
-- high_cardinality__apache_3j_diagnosis_209.01: Asthma
+high_cardinality__apache_3j_diagnosis_401.01: intracranial haemorrhage or haematoma
+high_cardinality__apache_3j_diagnosis_202.01: Respiratory arrest
+high_cardinality__apache_3j_diagnosis_102.01: Cardiac arrest
+high_cardinality__apache_3j_diagnosis_306.01: Bleeding, lower GI
+high_cardinality__apache_3j_diagnosis_410.01: Coma/change in level of consciousness
+high_cardinality__apache_3j_diagnosis_1206.03: Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
+high_cardinality__apache_3j_diagnosis_407.01: Seizures (primary - no structural brain disease)
+high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded diagnosis
+high_cardinality__apache_3j_diagnosis_1204.02: Aneurysm, thoracic
+high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
+high_cardinality__apache_3j_diagnosis_209.01: Asthma
 
 - Diagnoses share the highest percentage in logistic regression ranking and there is a high correlation between the original and the balanced model.
 - logr top positive diagnoses in order are intracranial haemorrhage, respiratory arrest, cardiac arrest, ventilated apache/receiving ventilation, tumor with metastasis meaning they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. 
@@ -222,7 +219,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - logr_b top negative diagnoses are Asthma, Coronary artery bypass graft (CABG) with valve repair or replacement, CABG with single valve repair or replacement, Seizures without structural brain disease, Bleeding lower GI
 
   
-Both models share an extreme correlation in positive and negative features. However, they disagree on few features such as:
+Both models share an extreme correlation in positive and negative features. However, they disagree on some features such as:
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
 | numerical__missingindicator_apache_4a_hospital_death_prob | 0.078 | -0.044 |
@@ -243,6 +240,9 @@ Both models share an extreme correlation in positive and negative features. Howe
 | numerical__apache_4a_icu_death_prob | -0.077 | 0.014 | 
 | high_cardinality__apache_3j_diagnosis_204.01 | -0.061 | 0.092 | 
 
+- Some of the most prominent positive features for logr and negative for logr_b are:
+- Those features are more likely associated with mortality for original logr but not associated with mortality in balanced logr.
+- Some of the most prominent negative features for logr and positive for logr_b are: 
 
 
 number_inpatient is the highest feature for both logr and logr_b indicating the number of previous hospitalizations is associated with our target class the most, as it increases, so is the chance of readmission does. The more previous hospitalizations, the higher the change of a readmission within 30 days.
