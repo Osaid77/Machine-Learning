@@ -317,11 +317,11 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 
 
-# Decision tree and random forests feature importances
+# Decision trees and random forests feature importances
 
 #### Original and balanced decision tree models are correlated in their choices of feature importance for purity and homogenity. They both use these features the most:
 - apache_4a_icu_death_prob: probabilistic prediction of in ICU mortality for the patient based on Apache 4a. Original decision tree gives it 0.445 feature importance for homogenity.
-- apache_4a_hospital_death_prob: probabilistic prediction of in-hospital mortality based on Apache 4a. balanced decision tree gives it 0.793 feature importance for homogenity.
+- apache_4a_hospital_death_prob: probabilistic prediction of in-hospital mortality based on Apache 4a. Balanced decision tree gives it 0.793 feature importance for homogenity.
 - d1_lactate_max: Highest lactate concentration in first 24 hours.
 - d1_heartrate_min: Lowest heart rate in first 24 hours.
 - d1_spo2_min: Lowest o2 saturation in first 24 hours.
@@ -337,9 +337,13 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 
 
-# Feature importances
+# Permutation importances
 
 - All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.
+
+
+
+
 However, there's a disagreement between trees feature importance and permutation importance
 
 | Model | Feature | Tree importance | Permutation importance |
@@ -348,31 +352,36 @@ However, there's a disagreement between trees feature importance and permutation
 
 This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC. 
 
+# I will write the test set evaluation section after you give me feedback on all what I wrote first. I plan to go with hgb thre 0.10 for testing set 
 
 # Test set evaluation
+
+### Out model of choice is: gradient boosting at threshold 0.10.
+
 | Metric | Validation | Test |
 | :--- | :---: | ---: |
-| Acc | 0.57 | 0.56 |
-| Prc | 0.11 | 0.11 | 
-| Rec | 0.58 | 0.57 | 
-| F1 | 0.19 | 0.18 | 
-| Spc | 0.57 | 0.56 | 
-| Roc | 0.60 | 0.60 | 
-| AP | 0.13 | 0.13 | 
-| Brier | 0.24 | 0.24 |
+| Acc | 0.84 |  |
+| Prc | 0.32 |  | 
+| Rec | 0.777 |  | 
+| F1 | 0.457 |  | 
+| Spc | 0.847 |  | 
+| Roc | 0.894 |  | 
+| AP | 0.56 |  | 
+| Brier | 0.054 |  |
 
+
+## ignore these 2 bullet lines:
 - Based on the results shown, we can see that testing and validation are pretty similar or the same confirming consistency of results and good generalization with unseen patients within the same dataset. Discrimination however remains weak despite good consistency.
 - External validation is required.   
 
 
 # Project limitations
-- Imbalanced dataset with the positive class representing only 8.79% of the entire dataset.
-- A historical dataset: Diabetes 130-US Hospitals for Years 1999-2008
-- Weak discrimination at a range of ROC-AUC at only 0.60
+- Imbalanced dataset with the positive class representing only 8.63% of the entire dataset.
+- A historical dataset: WiDS Datathon 2020: ICU Mortality Prediction. 
 - Lack of external validation
 
 
  # Future improvements
  - Additional clinical predictors
- - More thresholds to be selected like [0.08, 0.15, 0.20, 0.25]
+ - More thresholds to be selected like [0.07, 0.15, 0.25]
  - More feature engineering and external validation
