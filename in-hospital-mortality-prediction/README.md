@@ -209,19 +209,26 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - high_cardinality__apache_3j_diagnosis_410.01: Coma/change in level of consciousness
 - high_cardinality__apache_3j_diagnosis_1206.03: Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
 - high_cardinality__apache_3j_diagnosis_407.01: Seizures (primary - no structural brain disease)
-- high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded record
+- high_cardinality__apache_3j_diagnosis_nan: Missing/unrecorded diagnosis
 - high_cardinality__apache_3j_diagnosis_1204.02: Aneurysm, thoracic
 - high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
 - high_cardinality__apache_3j_diagnosis_209.01: Asthma
 
 - Diagnoses share the highest percentage in logistic regression ranking and there is a high correlation between the original and the balanced model.
-- logr top positive diagnoses are .... meaning ...
-- logr top negative diagnoses are .... meaning ...
-- logr_b top positive diagnoses are .... meaning ...
-- logr_b top negative diagnoses are .... meaning ...
-  
-Both models agree on top 5 positive features and bottom 5 negative features 
+- logr top positive diagnoses in order are intracranial haemorrhage, respiratory arrest, cardiac arrest, ventilated apache/receiving ventilation, tumor with metastasis meaning they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. 
+- logr top negative diagnoses in order are seizure without structural brain disease, Coronary Artery Bypass Graft (CABG) with single valve repair or replacement, Coma/change in level of consciousness, elective/non-urgent surgery, and bleeding/lower GI meaning they're the least associated with our target class of in-hospital mortality.
 
+- logr_b top positive diagnoses are cardiac arrest, respiratory arrest, intracranial hemorrhage, Missing/unrecorded diagnosis, and Aneurysm, thoracic.
+- logr_b top negative diagnoses are Asthma, Coronary artery bypass graft (CABG) with valve repair or replacement, CABG with single valve repair or replacement, Seizures without structural brain disease, Bleeding lower GI
+
+  
+Both models share an extreme correlation in positive and negative features. However, they disagree on few features such as:
+| Feature | logr_coeff | logr_b_coeff |
+| :--- | :---: | ---: |
+| high_cardinality__apache_3j_diagnosis_401.01 | 0.725 | 0.756 |
+| high_cardinality__apache_3j_diagnosis_202.01 | 0.679 | 0.798 | 
+| high_cardinality__apache_3j_diagnosis_102.01 | 0.664 | 0.858 | 
+| binary__ventilated_apache | 0.594 | 0.583 | 
 
 
 
