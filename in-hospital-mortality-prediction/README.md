@@ -29,6 +29,7 @@ In-hospital mortality is widely common after being hospitalized for certain amou
 | High-cardinality | 1 | APACHE III diagnosis | 
 | Total | 109 |  | 
 
+- The complete list of selected features can be found in mortality_model.py.
 - Limitation: There is a very minor redundancy within the selected features e.g. "h1_diasbp_noninvasive_max" & "h1_diasbp_max" but generally there's low correlation between them i.e. in the ranges of 0.30 - 0.60
 - Target: Mortality within hospitalization
 - Target percentage: 8.63%
@@ -150,7 +151,7 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 
 ## Calibration interpretation
-- Calibration generally produces lower Brier scores for calibrated models meaning it improves probability quality which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models.
+- Calibration generally produces lower Brier scores for calibrated models meaning it improves probability quality which is a good sign of making better calibration but on the expense of worsening some other metrics especially for our selected models.
 - Calibration produces lower recall and higher precision and specificity for most models. Even in this case, our selected models of choice above are produce better balance without calibration. Recall is the most important metric in our case and calibration lowers it for most models.
 - It doesn't add any benefit to our model of choice: hgb at thre 0.10.
 
