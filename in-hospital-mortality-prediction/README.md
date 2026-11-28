@@ -363,7 +363,7 @@ However, there is an agreement between trees feature importance and permutation 
 | rf | ventilated_apache | 0.017 | 0.003 |
 
 
-This means these features contribute a lot in purity of the decision trees and random forests and actually provided lower shuffled ROC-AUC than the original validation ROC-AUC.
+This means these features contribute a lot in purity of the decision trees and random forests and actually provided lower shuffled ROC-AUC than the original validation ROC-AUC. Which means shuffling the feature hurts performance because shuffling harmed ROC-AUC and made it lower. 
 
 
 
