@@ -339,7 +339,18 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 # Permutation importances
 
-- All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on number_inpatient i.e. previous number of hospitalisations for ranking positive from negative class. Followed by time_in_hospital and diabetesMed.
+### ROC-AUC is used to measure performance changes between original validation ROC-AUC and mean shuffled ROC-AUC. All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on similar set of features for ranking positive from negative classes including
+logr + logr_b: age - apache_4a_hospital_death_prob - h1_mbp_noninvasive_min - d1_bun_max - d1_hemaglobin_min - apache_3j_diagnosis - d1_mbp_min 
+dt + dt_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - d1_spo2_min - d1_lactate_max 
+rf + rf_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - age - ventilated_apache 
+hgb + hgb_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - age - ventilated_apache - d1_spo2_min
+
+
+
+
+
+
+
 
 
 
@@ -350,7 +361,16 @@ However, there's a disagreement between trees feature importance and permutation
 | :--- | :---: | :---: | ---: |
 | dt | num_lab_procedures | 0.35 | -0.015 |
 
-This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC. 
+This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC.
+
+
+
+
+
+
+
+
+
 
 # I will write the test set evaluation section after you give me feedback on all what I wrote first. I plan to go with hgb thre 0.10 for testing set 
 
