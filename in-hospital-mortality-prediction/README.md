@@ -319,13 +319,21 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 # Decision tree and random forests feature importances
 
-Original and balanced models differ in their choices of feature importance for purity and homogenity. 
+#### Original and balanced decision tree models are correlated in their choices of feature importance for purity and homogenity. They both use these features the most:
+- apache_4a_icu_death_prob: probabilistic prediction of in ICU mortality for the patient based on Apache 4a. Original decision tree gives it 0.445 feature importance for homogenity.
+- apache_4a_hospital_death_prob: probabilistic prediction of in-hospital mortality based on Apache 4a. balanced decision tree gives it 0.793 feature importance for homogenity.
+- d1_lactate_max: Highest lactate concentration in first 24 hours.
+- d1_heartrate_min: Lowest heart rate in first 24 hours.
+- d1_spo2_min: Lowest o2 saturation in first 24 hours.
+- d1_temp_max: Highest temperature recorded in first 24 hours.
+- d1_sysbp_min: Lowest systolic bp recorded in first 24 hours.
 
-num_lab_procedures feature is the top feature that help tree purity/homogeniety in both original DT and RF. Closely Followed by num_medications.
 
-number_inpatient features is the top feature that help tree purity/homogeniety in both balanced DT and RF. Closely followed by time_in_hospital.
-
-Reflecting how balanced models rely more on features with minority class.
+#### Original and balanced random forest models use the same features above for purity & homogenity and even other features including:
+- numerical__d1_sysbp_noninvasive_min: Lowest systolic blood pressure in first 24 hours, non-invasively measured
+- numerical__d1_sysbp_min: Lowest systolic blood pressure during in first 24 hours, either non-invasively or invasively measured
+- d1_arterial_ph_min: Lowest arterial pH in first 24 hours
+- gcs_motor_apache: motor component of the Glasgow Coma Scale
 
 
 
