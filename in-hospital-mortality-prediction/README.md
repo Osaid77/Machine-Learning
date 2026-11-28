@@ -231,7 +231,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - cardiac arrest
 - ventilated apache/receiving ventilation
 - tumor with metastasis
-- It means they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. The higher the number is, the more association with mortality. The lower the number is, the lower association.
+- It means they're associated with our target class of in-hospital mortality the most holding other features constant. As these features exist, so is the chance of mortality. The higher the number is, the more association with mortality. The lower the number is, the lower association.
 
   
 ### logr top negative diagnoses in order are:
@@ -241,7 +241,7 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - Coma/change in level of consciousness
 - elective/non-urgent surgery
 - bleeding/lower GI
-- Meaning they're the least associated with our target class of in-hospital mortality. The more negative the number is, the less the association with mortality. The less negative the number is, the less is the association. 
+- Meaning they're the least associated with our target class of in-hospital mortality holding other features contant. The more negative the number is, the less the association with mortality. The less negative the number is, the less is the association. 
 
 #### logr_b top positive diagnoses are cardiac arrest, respiratory arrest, intracranial hemorrhage, Missing/unrecorded diagnosis, and Aneurysm, thoracic.
 #### logr_b top negative diagnoses are Asthma, Coronary artery bypass graft (CABG) with valve repair or replacement, CABG with single valve repair or replacement, Seizures without structural brain disease, Bleeding lower GI.
