@@ -339,29 +339,31 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 
 # Permutation importances
 
-### ROC-AUC is used to measure performance changes between original validation ROC-AUC and mean shuffled ROC-AUC. All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on similar set of features for ranking positive from negative classes including
-logr + logr_b: age - apache_4a_hospital_death_prob - h1_mbp_noninvasive_min - d1_bun_max - d1_hemaglobin_min - apache_3j_diagnosis - d1_mbp_min 
-dt + dt_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - d1_spo2_min - d1_lactate_max 
-rf + rf_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - age - ventilated_apache 
-hgb + hgb_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - age - ventilated_apache - d1_spo2_min
+### ROC-AUC is used to measure performance changes between original validation ROC-AUC and mean shuffled ROC-AUC. All models logistic regression, decision trees, random forests, and gradient boosting originals and balanced rely on similar set of features for ranking positive from negative classes including:
+- logr + logr_b: age - apache_4a_hospital_death_prob - h1_mbp_noninvasive_min - d1_bun_max - d1_hemaglobin_min - apache_3j_diagnosis - d1_mbp_min 
+- dt + dt_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - d1_spo2_min - d1_lactate_max 
+- rf + rf_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - age - ventilated_apache 
+- hgb + hgb_b: apache_4a_hospital_death_prob - apache_4a_icu_death_prob - age - ventilated_apache - d1_spo2_min
 
 
 
-
-
-
-
-
-
-
-
-However, there's a disagreement between trees feature importance and permutation importance
+However, there is an agreement between trees feature importance and permutation importance. So, original & balanced dt tree importances and permutation importances are both positive. 
 
 | Model | Feature | Tree importance | Permutation importance |
 | :--- | :---: | :---: | ---: |
-| dt | num_lab_procedures | 0.35 | -0.015 |
+| dt | apache_4a_hospital_death_prob | 0.143 | 0.11 |
+| dt | apache_4a_icu_death_prob | 0.445 | 0.38 |
+| dt | d1_spo2_min | 0.031 | 0.006 |
+| dt | d1_lactate_max | 0.066 | 0.006 |
+| dt | age | 0.005 | 0.000 |
+| dt | ventilated_apache | 0.001 | 0.000 |
+| rf | apache_4a_hospital_death_prob | 0.092 | 0.013 |
+| rf | apache_4a_icu_death_prob | 0.083 | 0.010 |
+| rf | age | 0.010 | 0.003 |
+| rf | ventilated_apache | 0.017 | 0.003 |
 
-This means this feature contributes a lot in purity of the original decision tree and actually provided better shuffled ROC-AUC than the original ROC-AUC.
+
+This means these features contribute a lot in purity of the decision trees and random forests and actually provided lower shuffled ROC-AUC than the original validation ROC-AUC.
 
 
 
