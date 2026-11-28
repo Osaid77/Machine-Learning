@@ -211,27 +211,33 @@ Choosing the best model depends on clinical engineering judgement and requiremen
 - high_cardinality__apache_3j_diagnosis_1207.01: Coronary artery bypass graft (CABG) with valve repair or replacement
 - high_cardinality__apache_3j_diagnosis_209.01: Asthma
 
-- Among all 109 features including labs, vitals, demographics and others, the high-cardinality feature "apache_3j_diagnosis" share the highest percentage in logistic regression ranking. Generally, there is a high correlation between the original and the balanced logr.
-- logr top positive diagnoses in order are:
+### Among all 109 features including labs, vitals, demographics and others, the high-cardinality feature "apache_3j_diagnosis" share the highest percentage in logistic regression ranking. Generally, there is a high correlation between the original and the balanced logr.
+
+### logr top positive diagnoses in order are:
+
 - intracranial haemorrhage
 - respiratory arrest
 - cardiac arrest
 - ventilated apache/receiving ventilation
 - tumor with metastasis
 - It means they're associated with our target class of in-hospital mortality the most. As these features exist, so is the chance of mortality. The higher the number is, the more association with mortality. The lower the number is, the lower association.
-- logr top negative diagnoses in order are:
+
+  
+### logr top negative diagnoses in order are:
+
 - seizure without structural brain disease
 - Coronary Artery Bypass Graft (CABG) with single valve repair or replacement
 - Coma/change in level of consciousness
 - elective/non-urgent surgery
 - bleeding/lower GI
-- meaning they're the least associated with our target class of in-hospital mortality. The more negative the number is, the less the association with mortality. The less negative the number is, the less is the association. 
+- Meaning they're the least associated with our target class of in-hospital mortality. The more negative the number is, the less the association with mortality. The less negative the number is, the less is the association. 
 
-- logr_b top positive diagnoses are cardiac arrest, respiratory arrest, intracranial hemorrhage, Missing/unrecorded diagnosis, and Aneurysm, thoracic.
-- logr_b top negative diagnoses are Asthma, Coronary artery bypass graft (CABG) with valve repair or replacement, CABG with single valve repair or replacement, Seizures without structural brain disease, Bleeding lower GI
+#### logr_b top positive diagnoses are cardiac arrest, respiratory arrest, intracranial hemorrhage, Missing/unrecorded diagnosis, and Aneurysm, thoracic.
+#### logr_b top negative diagnoses are Asthma, Coronary artery bypass graft (CABG) with valve repair or replacement, CABG with single valve repair or replacement, Seizures without structural brain disease, Bleeding lower GI.
 
   
-Both models share an extreme correlation in positive and negative features. However, they disagree on some features such as:
+## Both models share an extreme correlation in positive and negative features. However, they disagree on some features such as:
+
 | Feature | logr_coeff | logr_b_coeff |
 | :--- | :---: | ---: |
 | numerical__missingindicator_apache_4a_hospital_death_prob | 0.078 | -0.044 |
@@ -255,7 +261,7 @@ Both models share an extreme correlation in positive and negative features. Howe
 - high_cardinality__apache_3j_diagnosis_204.01: ARDS — Acute Respiratory Distress Syndrome / non-cardiogenic pulmonary edema
 - high_cardinality__apache_3j_diagnosis_211.09: Respiratory disorder, other
 
-- Some of the most prominent positive features for logr and negative for logr_b are:
+### Some of the most prominent positive features for logr and negative for logr_b are:
 - hematocrit_apache
 - bilirubin_apache
 - d1_spo2_min: lowest oxygen saturation measured in first 24 hours
@@ -264,7 +270,7 @@ Both models share an extreme correlation in positive and negative features. Howe
 - Those features are more likely associated with mortality for original logr but NOT associated with mortality in balanced logr.
 
 
-- Some of the most prominent negative features for logr and positive for logr_b are:
+### Some of the most prominent negative features for logr and positive for logr_b are:
 - ARDS — Acute Respiratory Distress Syndrome / non-cardiogenic pulmonary edema
 - hospital_admit_source_Emergency Department
 - apache_3j_bodysystem_Sepsis: diagnosed as sepsis case
@@ -272,14 +278,14 @@ Both models share an extreme correlation in positive and negative features. Howe
 - Those features are more likely associated with mortality for balanced logr but NOT associated with mortality in original logr.
 
 
-- Gender difference is as follows:
+### Gender difference is as follows:
 - Original logr: negative for both male and female, meaning neither genders is associated with increased mortality i.e. gender doesn't play a role in mortality prediction. However, male gender is more likely associated with mortality because it demonstrates less negative coefficient. 
 - Balanced logr: positive for both male and female, meaning both genders are associated with increased mortality i.e. gender plays a role in mortality prediction. However, male gender is more like associated with mortality because it demonstrates higher positive value.  
 
 
-Intracranial haemorrhage, respiratory arrest, cardiac arrest are the top 3 highest positive features for both logr and logr_b indicating that these conditions are associated with our target class the most, as they exist, so is the chance of mortality does.
+### Intracranial haemorrhage, respiratory arrest, cardiac arrest are the top 3 highest positive features for both logr and logr_b indicating that these conditions are associated with our target class the most, as they exist, so is the chance of mortality does.
 
-Other features agreed on the most by the balanced and original models that also contribute to our positive target class are: 
+### Other features agreed on the most by the balanced and original models that also contribute to our positive target class are: 
 - ventilated_apache: whether the patient received ventilation or not
 - solid_tumor_with_metastasis: binary
 - Subdural/Epidural haematoma
@@ -291,9 +297,10 @@ Other features agreed on the most by the balanced and original models that also 
 - Head trauma +/- multi trauma
 - Acid-Base / electrolyte disturbance
 
-Notice that all those features are mostly derived from the high cardinality "apache_3j_diagnosis" feature. The presence of any of these reflects the most association with mortality.
+#### Notice that all those features are mostly derived from the high cardinality "apache_3j_diagnosis" feature. The presence of any of these reflects the most association with mortality.
 
-On the other hand, the most negative features agreed on by both original and balanced logr are:
+
+### On the other hand, the most negative features agreed on by both original and balanced logr are:
 - Seizures (primary-no structural brain disease)
 - Coma/change in level of consciousness
 - elective_surgery: Binary whether the patient was admitted for elective surgery
@@ -305,7 +312,7 @@ On the other hand, the most negative features agreed on by both original and bal
 - Carbon monoxide, arsenic, or cyanide poisoning
 - Diabetic ketoacidosis (DKA)
 
-These features are the least associated with in-hospital mortality and they all belong to the high cardinality "apache_3j_diagnosis" feature. 
+#### These features are the least associated with in-hospital mortality and they all belong to the high cardinality "apache_3j_diagnosis" feature. 
 
 
 
