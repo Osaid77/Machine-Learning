@@ -152,8 +152,8 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 ## Calibration interpretation
 - Calibration generally produces lower Brier scores for calibrated models meaning it improves probability quality which is a good sign of making better calibration but on the expense of worsening some other metrics especially for our selected models.
-- Calibration produces lower recall and higher precision and specificity for most models. Even in this case, our selected models of choice above are produce better balance without calibration. Recall is the most important metric in our case and calibration lowers it for most models.
-- It doesn't add any benefit to our model of choice: hgb at thre 0.10.
+- Calibration produces lower recall and higher precision and specificity for most models. Our selected models of choice above produce better balance of metrics without calibration. Recall is the most important metric in our case and calibration lowers it for most models.
+- It doesn't generally add benefit to our model of choice: hgb at thre 0.10.
 
 
 
