@@ -1,13 +1,13 @@
 # Project overview
 
 A machine learning model to Predict in-hospital mortality using clinical information collected within first 24 hours of hospitalization. I use multiple classifiers to predict our target including the dummy classifier.
-Data is split into 70% training, 15% validation, and 15% for testing and data is already unique i.e. each record represents a different patient.
+Data is split into 70% training, 15% validation, and 15% for testing and data is already unique i.e. each record represents a different patient because of unique patient_id
 Class imbalance is spotted as the positive class labels represents only 8.63% of the dataset.
 
 
 # Clinical problem & objective
 
-In-hospital mortality is widely common after being hospitalized for certain amount of time. I built a model to predict whether a patient will experience mortality within and after 24 hours of admission using a variety of features including categorical, numerical, binary, ordinal, and high-cardinality features.
+In-hospital mortality is widely common after being hospitalized for certain amount of time. I built a model to predict whether a patient will experience in-hospital mortality using a variety of features including categorical, numerical, binary, ordinal, and high-cardinality features.
 
 
 
@@ -16,7 +16,7 @@ In-hospital mortality is widely common after being hospitalized for certain amou
 - Dataset: WiDS Datathon 2020: ICU Mortality Prediction. 
 - Instances: 91713
 - No duplicates exist
-- Total Features in the dataset: 186
+- Total Features in the dataset: 186 including the target and the identifiers
 - Examined each of the 186 features based on which ones are appropriate from clinical sense perspective, value counts, missingness percentage, skewness, equality, and correlation. Only kept the most relevant ones for predictions.
 - Features used in this project are 109 in total including categorical, numerical, binary, high-cardinality, and ordinal features. They span demographic, lab, vitals, probabilities, and diagnoses.
 
@@ -29,19 +29,28 @@ In-hospital mortality is widely common after being hospitalized for certain amou
 | High-cardinality | 1 | APACHE III diagnosis | 
 | Total | 109 |  | 
 
-- Limitation: only 109 features were chosen out of 186 and there is a minor redundancy within those selected features 
+- Limitation: There is a very minor redundancy within the selected features e.g. "h1_diasbp_noninvasive_max" & "h1_diasbp_max" but generally there's low correlation between them i.e. in the ranges of 0.30 - 0.60
 - Target: Mortality within hospitalization
 - Target percentage: 8.63%
-- Features like "apache_4a_icu_death_prob" and "apache_4a_hospital_death_prob" included -1 probability for approx. 2000 records for each. I replaced -1 with the median probability as there was some skewness spotted and mean was inappropriate to be used
+- Features like "apache_4a_icu_death_prob" and "apache_4a_hospital_death_prob" included -1 probability for approx. 2000 records for each. I replaced -1 with NaN and then filled these NaN values with training-fitted median imputation i.e. used the median probability for NaN as there was some skewness spotted and mean was inappropriate to be used
 - Citation:
 Lee, Meredith, et al. "WiDS (Women in Data Science) Datathon 2020: ICU Mortality Prediction" (version 1.0.0). PhysioNet (2020). RRID:SCR_007345. https://doi.org/10.13026/vc0e-th79
 
 # Data preparation & leakage prevention
 
-- No duplicates exist in the data
+- No duplicates exist in the data 
 - Splitting before preprocessing as I do stratification which preserves approximately the same class proportions among training, validation and testing set. So, the positive class becomes 8.63% among all sets.
 - fitting transformation on training data only
-- Separated the preprocessing of each of the feature categories: numerical, categorical, binary, high-cardinality, and ordinal features. Each in its own preprocessing pipeline.
+- Separated the preprocessing of each of the feature categories: numerical, categorical, binary, high-cardinality, and ordinal features. Each in its own preprocessing pipeline as shown:
+
+| Feature group | Preprocessing |
+| :--- | ---: |
+| Categorical | One-hot encoding |
+| Numerical | Median imputation, missing indicators & scaling | 
+| Binary | Most-frequent imputation & missing indicators | 
+| Ordinal | Most-frequent imputation & missing indicators with original ordering preserved | 
+| High-cardinality | One-hot encoding with rare-category grouping | 
+| Total | 109 |  
 
 
 # Technologies
