@@ -50,7 +50,8 @@ Lee, Meredith, et al. "WiDS (Women in Data Science) Datathon 2020: ICU Mortality
 | Binary | Most-frequent imputation & missing indicators | 
 | Ordinal | Most-frequent imputation & missing indicators with original ordering preserved | 
 | High-cardinality | One-hot encoding with rare-category grouping | 
-| Total | 109 |  
+
+
 
 
 # Technologies
@@ -59,6 +60,8 @@ Lee, Meredith, et al. "WiDS (Women in Data Science) Datathon 2020: ICU Mortality
 - Numpy
 - Pandas
 - Scikit-Learn
+
+
 
 
 # Installation & usage
@@ -141,13 +144,16 @@ rnadom_state=42 was implemented across training, validation, and testing splitti
 
 
 ## Class balancing Interpretation
-- Even though class balance gives more attention & weight contribution to minority positive class which only represents 8.63% in our dataset, balanced models tend to perform pretty similar to original models in our project. Balanced models tend to produce higher recall but in the expense of lower precision.  
+- Even though class balance gives more attention & weight contribution to minority positive class which only represents 8.63% in our dataset, balanced models tend to perform pretty similar to original models in our project. Balanced models however tend to produce higher recall but in the expense of lower precision.  
+
+
 
 
 ## Calibration interpretation
 - Calibration generally produces lower Brier scores for calibrated models meaning it improves probability quality which is a good sign of making better calibration but on the expense of significantly worsening most metrics especially for our selected models.
 - Calibration produces lower recall and higher precision and specificity for most models. Even in this case, our selected models of choice above are produce better balance without calibration. Recall is the most important metric in our case and calibration lowers it for most models.
 - It doesn't add any benefit to our model of choice: hgb at thre 0.10.
+
 
 
 
